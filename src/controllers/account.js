@@ -8,6 +8,8 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
 
+    console.log(value)
+
     switch (value.toLocaleUpperCase()) {
       case 'Daily Health Report':
         body = getBodyDailyHealthReport(url, replyToken)
@@ -22,14 +24,11 @@ const account = async (req, res) => {
       default:
         break
     }
-
-    res.sendStatus(200)
-    res.send('success')
+    res.status(200).send('success')
   } catch (e) {
     body = getBodySignIn(url, replyToken)
     line.sendReplyBodyToLine(replyToken, body)
-    res.sendStatus(200)
-    res.send('success')
+    res.status(200).send('success')
   }
 }
 
