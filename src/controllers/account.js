@@ -7,7 +7,7 @@ const account = async (req, res) => {
   try {
     const value = req.body.events[0].message.text || 'no text'
     await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
-
+    console.log('replyToken ', replyToken)
     switch (value) {
       case 'Daily Health Report':
         console.log(value)
@@ -187,9 +187,14 @@ function getBodyDailyHealthReport(url, replyToken) {
                 size: 'xxl'
               },
               {
-                type: "uri",
-                label: "รายงานสุขภาพประจำวัน (Daily Health Report)",
-                uri: url
+                type: 'button',
+                style: 'primary',
+                color: '#3949ab',
+                action: {
+                  type: 'uri',
+                  label: 'Daily Health Report',
+                  uri: url
+                }
               }
             ]
           }
