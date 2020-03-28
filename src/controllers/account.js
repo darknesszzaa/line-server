@@ -345,25 +345,56 @@ function getBodySignIn(url, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        body: {
-          type: 'box',
-          layout: 'vertical',
-          contents: [
-            {
-              type: 'spacer',
-              size: 'xxl'
-            },
-            {
-              type: 'button',
-              style: 'primary',
-              color: '#3949ab',
-              action: {
-                type: 'uri',
-                label: 'Sign In',
-                uri: url
-              }
+        type: 'flex',
+        altText: 'Sigin In',
+        contents: {
+          type: 'bubble',
+          hero: {
+            type: 'image',
+            url: URL_LOGO,
+            action: {
+              type: 'uri',
+              uri: url
             }
-          ]
+          },
+          body: {
+            type: 'box',
+            layout: 'vertical',
+            spacing: 'md',
+            action: {
+              type: 'uri',
+              uri: url
+            },
+            contents: [
+              {
+                type: 'text',
+                text: 'Sigin In',
+                size: 'xl',
+                weight: 'bold',
+                align: 'center'
+              }
+            ]
+          },
+          footer: {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'spacer',
+                size: 'xxl'
+              },
+              {
+                type: 'button',
+                style: 'primary',
+                color: '#3949ab',
+                action: {
+                  type: 'uri',
+                  label: 'Open Copy Password',
+                  uri: url
+                }
+              }
+            ]
+          }
         }
       }
     ]
