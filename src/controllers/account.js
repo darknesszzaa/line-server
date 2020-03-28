@@ -187,14 +187,9 @@ function getBodyDailyHealthReport(url, replyToken) {
                 size: 'xxl'
               },
               {
-                type: 'button',
-                style: 'primary',
-                color: '#3949ab',
-                action: {
-                  type: 'uri',
-                  label: 'Daily Health Report',
-                  uri: url
-                }
+                type: "uri",
+                label: "รายงานสุขภาพประจำวัน (Daily Health Report)",
+                uri: url
               }
             ]
           }
