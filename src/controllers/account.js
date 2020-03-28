@@ -14,9 +14,20 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     let mode = ''
     let name = ''
+
+    // Verifylogin
+    var client = new HttpClient();
+
+
+    client.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, function (response) {
+      console.log('xxxxxxxxxxxxxx ', response)
+    });
+
+
     switch (value.toLocaleUpperCase()) {
-      case 'บัญชี':
-      case 'ALL':
+      case 'Daily Health Report':
+
+      case 'Risk Report':
         await setCommandDocument({ command: '' })
         const allData = await getAllDocument()
         if (allData) {
@@ -24,7 +35,12 @@ const account = async (req, res) => {
           line.sendReplyBodyToLine(replyToken, body)
         }
         break
-      case 'CLEAR':
+      case 'History':
+        commandStr = ''
+        params = []
+        await setCommandDocument({ command: '' })
+        break
+      case 'Notice':
         commandStr = ''
         params = []
         await setCommandDocument({ command: '' })
@@ -140,7 +156,7 @@ const account = async (req, res) => {
   }
 }
 
-String.prototype.pick = function(min, max) {
+String.prototype.pick = function (min, max) {
   var n,
     chars = ''
 
@@ -156,7 +172,7 @@ String.prototype.pick = function(min, max) {
   return chars
 }
 
-String.prototype.shuffle = function() {
+String.prototype.shuffle = function () {
   var array = this.split('')
   var tmp,
     current,
@@ -368,11 +384,11 @@ async function setCommandDocument(params) {
   await commandDocRef
     .doc('command')
     .set(params)
-    .then(function() {
+    .then(function () {
       console.log('Document successfully written!')
       return true
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error('Error writing document: ', error)
       return false
     })
@@ -383,14 +399,14 @@ function getCommandDocument() {
     await commandDocRef
       .doc('command')
       .get()
-      .then(function(doc) {
+      .then(function (doc) {
         if (doc.exists) {
           resolve(doc.data())
         } else {
           resolve(false)
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         reject(error)
         console.log('Error getting document:', error)
       })
@@ -401,11 +417,11 @@ async function setDocument(name, params) {
   await documentRef
     .doc(name)
     .set(params)
-    .then(function() {
+    .then(function () {
       console.log('Document successfully written!')
       return true
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error('Error writing document: ', error)
       return false
     })
@@ -420,10 +436,10 @@ function deleteDocument(name) {
   documentRef
     .doc(name)
     .delete()
-    .then(function() {
+    .then(function () {
       console.log('Document successfully deleted!')
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error('Error removing document: ', error)
     })
 }
@@ -433,14 +449,14 @@ function getDocument(name) {
     await documentRef
       .doc(name)
       .get()
-      .then(function(doc) {
+      .then(function (doc) {
         if (doc.exists) {
           resolve(doc.data())
         } else {
           resolve(false)
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         reject(error)
         console.log('Error getting document:', error)
       })
