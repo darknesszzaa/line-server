@@ -101,12 +101,12 @@ function getBodyHistoryReport(url, replyToken) {
             {
               type: "uri",
               label: "ประวัติของตนเอง",
-              uri: "http://covid.rvconnex.com/health-report"
+              uri: url + "/history"
             },
             {
               type: "uri",
               label: "ประวัติของสมาชิกทีม",
-              uri: "http://covid.rvconnex.com/health-report"
+              uri: url + "/history"
             }
           ],
           thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
