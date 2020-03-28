@@ -1,4 +1,5 @@
 const line = require('../utils/line')
+const https = require('https');
 let { firestore } = require('../utils/firebase')
 let documentRef = firestore.collection('account')
 let commandDocRef = firestore.collection('command')
@@ -21,6 +22,12 @@ const account = async (req, res) => {
 
     client.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, function (response) {
       console.log('xxxxxxxxxxxxxx ', response)
+    });
+
+    https.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, (response) => {
+      console.log('xxxxxxxxxxx ', response)
+    }).on("error", (error) => {
+      console.log("Error: " + error.message);
     });
 
 
