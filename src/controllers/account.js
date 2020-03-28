@@ -8,22 +8,21 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
-    console.log('replyToken ', replyToken);
     switch (value) {
       case 'Daily Health Report':
-        body = getBodyDailyHealthReport(url, userData.token, replyToken);
+        body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Risk Report':
-        body = getBodyRiskReport(url, userData.token, replyToken);
+        body = getBodyRiskReport(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'History':
-        body = getBodyHistoryReport(url, userData.token, replyToken);
+        body = getBodyHistoryReport(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Notice':
-        body = getBodyNews(url, userData.token, replyToken);
+        body = getBodyNews(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       default:
