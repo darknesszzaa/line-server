@@ -1,30 +1,30 @@
-const line = require('../utils/line')
+const line = require('../utils/line');
 const axios = require("axios");
-const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants')
+const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants');
 const url = 'http://covid.rvconnex.com';
 const account = async (req, res) => {
-  const replyToken = req.body.events[0].replyToken || 'no replyToken'
+  const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
     const value = req.body.events[0].message.text || 'no text'
     await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
-    console.log('replyToken ', replyToken)
+    console.log('replyToken ', replyToken);
     switch (value) {
       case 'Daily Health Report':
-        console.log(value)
-        body = getBodyDailyHealthReport(url, replyToken)
-        line.sendReplyBodyToLine(replyToken, body)
-        break
+        console.log(value);
+        body = getBodyDailyHealthReport(url, replyToken);
+        line.sendReplyBodyToLine(replyToken, body);
+        break;
       case 'Risk Report':
-        console.log(value)
-        break
+        console.log(value);
+        break;
       case 'History':
-        console.log(value)
-        break
+        console.log(value);
+        break;
       case 'Notice':
-        console.log(value)
-        break
+        console.log(value);
+        break;
       default:
-        break
+        break;
     }
     res.status(200).send('success')
   } catch (e) {
@@ -32,7 +32,7 @@ const account = async (req, res) => {
     line.sendReplyBodyToLine(replyToken, body)
     res.status(200).send('success')
   }
-}
+};
 
 function getBody(url, name, password, replyToken) {
   body = {
@@ -139,8 +139,8 @@ function getBody(url, name, password, replyToken) {
         }
       }
     ]
-  }
-  return body
+  };
+  return body;
 }
 
 function getBodyDailyHealthReport(url, replyToken) {
@@ -148,61 +148,25 @@ function getBodyDailyHealthReport(url, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        type: 'flex',
-        altText: 'Daily Health',
-        contents: {
-          type: 'bubble',
-          hero: {
-            type: 'image',
-            url: URL_LOGO,
-            action: {
-              type: 'uri',
-              uri: url
+        type: "template",
+        altText: "this is a buttons template",
+        template: {
+          type: "buttons",
+          actions: [
+            {
+              type: "uri",
+              label: "รายงานสุขภาพ",
+              uri: "http://covid.rvconnex.com/health-report"
             }
-          },
-          body: {
-            type: 'box',
-            layout: 'vertical',
-            spacing: 'md',
-            action: {
-              type: 'uri',
-              uri: url
-            },
-            contents: [
-              {
-                type: 'text',
-                text: 'Daily Health Report',
-                size: 'xl',
-                weight: 'bold',
-                align: 'center'
-              }
-            ]
-          },
-          footer: {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'spacer',
-                size: 'xxl'
-              },
-              {
-                type: 'button',
-                style: 'primary',
-                color: '#3949ab',
-                action: {
-                  type: 'uri',
-                  label: 'Daily Health Report',
-                  uri: url
-                }
-              }
-            ]
-          }
+          ],
+          thumbnailImageUrl: "https://www.residencyprograms.biz/wp-content/uploads/2016/03/img-friendly-pediatric-residency-programs-online-1024x700.jpg",
+          title: "Daily Health Report",
+          text: "รายงานสุขภาพประจำวัน"
         }
       }
     ]
-  }
-  return body
+  };
+  return body;
 }
 
 function getBodySignIn(url, replyToken) {
@@ -263,12 +227,12 @@ function getBodySignIn(url, replyToken) {
         }
       }
     ]
-  }
-  return body
+  };
+  return body;
 }
 
 function getBodyAll(data, replyToken) {
-  let contents = []
+  let contents = [];
   for (let i in data) {
     contents.push({
       type: 'box',
@@ -289,7 +253,7 @@ function getBodyAll(data, replyToken) {
           color: '#aaaaaa'
         }
       ]
-    })
+    });
   }
 
   body = {
@@ -327,10 +291,10 @@ function getBodyAll(data, replyToken) {
         }
       }
     ]
-  }
-  return body
+  };
+  return body;
 }
 
 module.exports = {
   account
-}
+};
