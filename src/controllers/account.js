@@ -39,38 +39,40 @@ const account = async (req, res) => {
       console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
       console.log(data);
     }
-
-    body = getBodySignIn(url, replyToken)
+    await setCommandDocument({ command: '' })
+    body = getBody(url, "name", "password", replyToken)
+    console.log(replyToken, body)
     line.sendReplyBodyToLine(replyToken, body)
+    res.setHeader("Content-Type", "text/html");
     res.sendStatus(200)
     res.send('success')
 
 
-    switch (value.toLocaleUpperCase()) {
-      case 'Daily Health Report':
+    // switch (value.toLocaleUpperCase()) {
+    //   case 'Daily Health Report':
 
-      case 'Risk Report':
-        await setCommandDocument({ command: '' })
-        const allData = await getAllDocument()
-        if (allData) {
-          body = getBodyAll(allData, replyToken)
-          line.sendReplyBodyToLine(replyToken, body)
-        }
-        break
-      case 'History':
-        commandStr = ''
-        params = []
-        await setCommandDocument({ command: '' })
-        break
-      case 'Notice':
-        commandStr = ''
-        params = []
-        await setCommandDocument({ command: '' })
-        break
-      default:
-        mode = commandStr ? params[0] : value
-        name = params[1]
-    }
+    //   case 'Risk Report':
+    //     await setCommandDocument({ command: '' })
+    //     const allData = await getAllDocument()
+    //     if (allData) {
+    //       body = getBodyAll(allData, replyToken)
+    //       line.sendReplyBodyToLine(replyToken, body)
+    //     }
+    //     break
+    //   case 'History':
+    //     commandStr = ''
+    //     params = []
+    //     await setCommandDocument({ command: '' })
+    //     break
+    //   case 'Notice':
+    //     commandStr = ''
+    //     params = []
+    //     await setCommandDocument({ command: '' })
+    //     break
+    //   default:
+    //     mode = commandStr ? params[0] : value
+    //     name = params[1]
+    // }
 
     // const password = randomPassword()
     // let data
