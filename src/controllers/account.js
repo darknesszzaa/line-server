@@ -345,47 +345,25 @@ function getBodySignIn(url, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        type: 'flex',
-        altText: 'Sign In',
-        contents: {
-          body: {
-            type: 'box',
-            layout: 'vertical',
-            spacing: 'md',
-            action: {
-              type: 'uri',
-              uri: url
+        body: {
+          type: 'box',
+          layout: 'vertical',
+          contents: [
+            {
+              type: 'spacer',
+              size: 'xxl'
             },
-            contents: [
-              {
-                type: 'text',
-                text: 'User Account',
-                size: 'xl',
-                weight: 'bold',
-                align: 'center'
-              },
-            ]
-          },
-          footer: {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'spacer',
-                size: 'xxl'
-              },
-              {
-                type: 'button',
-                style: 'primary',
-                color: '#3949ab',
-                action: {
-                  type: 'uri',
-                  label: 'Sign In',
-                  uri: url
-                }
+            {
+              type: 'button',
+              style: 'primary',
+              color: '#3949ab',
+              action: {
+                type: 'uri',
+                label: 'Sign In',
+                uri: url
               }
-            ]
-          }
+            }
+          ]
         }
       }
     ]
