@@ -3,22 +3,10 @@ const axios = require("axios");
 const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants')
 const url = 'http://covid.rvconnex.com';
 const account = async (req, res) => {
+  const replyToken = req.body.events[0].replyToken || 'no replyToken'
   try {
-    const replyToken = req.body.events[0].replyToken || 'no replyToken'
     const value = req.body.events[0].message.text || 'no text'
-
-    const response = await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
-    const data = response.data;
-
-    if (data) {
-      body = getBodySignIn(url, replyToken)
-      line.sendReplyBodyToLine(replyToken, body)
-      res.sendStatus(200)
-      res.send('success')
-    }
-
-
-
+    await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
 
     switch (value.toLocaleUpperCase()) {
       case 'Daily Health Report':
@@ -38,7 +26,8 @@ const account = async (req, res) => {
     res.sendStatus(200)
     res.send('success')
   } catch (e) {
-    console.log(e)
+    body = getBodySignIn(url, replyToken)
+    line.sendReplyBodyToLine(replyToken, body)
     res.sendStatus(200)
     res.send('success')
   }
