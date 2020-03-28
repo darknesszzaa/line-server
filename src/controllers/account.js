@@ -40,7 +40,7 @@ const account = async (req, res) => {
       console.log(data);
     }
     await setCommandDocument({ command: '' })
-    body = getBody(url, "name", "password", replyToken)
+    body = getBodySignIn(url, replyToken)
     console.log(replyToken, body)
     line.sendReplyBodyToLine(replyToken, body)
     res.setHeader("Content-Type", "text/html");
@@ -348,6 +348,24 @@ function getBodySignIn(url, replyToken) {
         type: 'flex',
         altText: 'Sign In',
         contents: {
+          body: {
+            type: 'box',
+            layout: 'vertical',
+            spacing: 'md',
+            action: {
+              type: 'uri',
+              uri: url
+            },
+            contents: [
+              {
+                type: 'text',
+                text: 'User Account',
+                size: 'xl',
+                weight: 'bold',
+                align: 'center'
+              },
+            ]
+          },
           footer: {
             type: 'box',
             layout: 'vertical',
