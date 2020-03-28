@@ -368,7 +368,7 @@ function getBodySignIn(url, replyToken) {
             contents: [
               {
                 type: 'text',
-                text: 'Sigin In to RV Health Monitoring',
+                text: 'RV Health Monitoring',
                 size: 'xl',
                 weight: 'bold',
                 align: 'center'
