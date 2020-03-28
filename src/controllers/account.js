@@ -81,7 +81,7 @@ const account = async (req, res) => {
               name: name,
               password: password
             })
-            url = URL_COPY_PASSWORD + Buffer.from(password).toString('base64')
+            url = 'http://covid.rvconnex.com'
             body = getBody(url, name, password, replyToken)
             line.sendReplyBodyToLine(replyToken, body)
           }
@@ -95,7 +95,7 @@ const account = async (req, res) => {
               name: name,
               password: password
             })
-            url = URL_COPY_PASSWORD + Buffer.from(password).toString('base64')
+            url = 'http://covid.rvconnex.com'
             body = getBody(url, name, password, replyToken)
             line.sendReplyBodyToLine(replyToken, body)
           }
@@ -104,8 +104,7 @@ const account = async (req, res) => {
         case 'ดู':
           data = await getDocument(name)
           if (data) {
-            url =
-              URL_COPY_PASSWORD + Buffer.from(data.password).toString('base64')
+            url = url = 'http://covid.rvconnex.com'
             body = getBody(url, name, data.password, replyToken)
             line.sendReplyBodyToLine(replyToken, body)
           }
