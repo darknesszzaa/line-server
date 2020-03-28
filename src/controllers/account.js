@@ -6,22 +6,24 @@ const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
     const value = req.body.events[0].message.text || 'no text'
-    await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
+    await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
     console.log('replyToken ', replyToken);
     switch (value) {
       case 'Daily Health Report':
-        console.log(value);
         body = getBodyDailyHealthReport(url, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Risk Report':
-        console.log(value);
+        body = getBodyRiskReport(url, replyToken);
+        line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'History':
-        console.log(value);
+        body = getBodyHistoryReport(url, replyToken);
+        line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Notice':
-        console.log(value);
+        body = getBodyNews(url, replyToken);
+        line.sendReplyBodyToLine(replyToken, body);
         break;
       default:
         break;
@@ -33,115 +35,6 @@ const account = async (req, res) => {
     res.status(200).send('success')
   }
 };
-
-function getBody(url, name, password, replyToken) {
-  body = {
-    replyToken: replyToken,
-    messages: [
-      {
-        type: 'flex',
-        altText: 'User Account',
-        contents: {
-          type: 'bubble',
-          hero: {
-            type: 'image',
-            url: URL_LOGO,
-            action: {
-              type: 'uri',
-              uri: url
-            }
-          },
-          body: {
-            type: 'box',
-            layout: 'vertical',
-            spacing: 'md',
-            action: {
-              type: 'uri',
-              uri: url
-            },
-            contents: [
-              {
-                type: 'text',
-                text: 'User Account',
-                size: 'xl',
-                weight: 'bold',
-                align: 'center'
-              },
-              {
-                type: 'box',
-                layout: 'vertical',
-                spacing: 'sm',
-                contents: [
-                  {
-                    type: 'box',
-                    layout: 'baseline',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Name',
-                        weight: 'bold',
-                        margin: 'sm',
-                        flex: 0
-                      },
-                      {
-                        type: 'text',
-                        text: name,
-                        size: 'sm',
-                        align: 'end',
-                        color: '#aaaaaa'
-                      }
-                    ]
-                  },
-                  {
-                    type: 'box',
-                    layout: 'baseline',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Password',
-                        weight: 'bold',
-                        margin: 'sm',
-                        flex: 0
-                      },
-                      {
-                        type: 'text',
-                        text: password,
-                        size: 'sm',
-                        align: 'end',
-                        color: '#aaaaaa'
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          footer: {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'spacer',
-                size: 'xxl'
-              },
-              {
-                type: 'button',
-                style: 'primary',
-                color: '#3949ab',
-                action: {
-                  type: 'uri',
-                  label: 'Open Copy Password',
-                  uri: url
-                }
-              }
-            ]
-          }
-        }
-      }
-    ]
-  };
-  return body;
-}
 
 function getBodyDailyHealthReport(url, replyToken) {
   body = {
@@ -156,12 +49,95 @@ function getBodyDailyHealthReport(url, replyToken) {
             {
               type: "uri",
               label: "รายงานสุขภาพ",
+              uri: url + "/health-report"
+            }
+          ],
+          thumbnailImageUrl: "https://c.pshere.com/photos/44/50/checking_checklist_daily_report_data_document_hand_health_healthcare-1001745.jpg!d",
+          title: "รายงานสุขภาพ",
+          text: "Daily Health Report"
+        }
+      }
+    ]
+  };
+  return body;
+}
+
+function getBodyRiskReport(url, replyToken) {
+  body = {
+    replyToken: replyToken,
+    messages: [
+      {
+        type: "template",
+        altText: "this is a buttons template",
+        template: {
+          type: "buttons",
+          actions: [
+            {
+              type: "uri",
+              label: "แบบประเมินความเสี่ยง",
+              uri: url + "/risk-report"
+            }
+          ],
+          thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
+          title: "แบบประเมินความเสี่ยง",
+          text: "Risk Report"
+        }
+      }
+    ]
+  };
+  return body;
+}
+
+function getBodyHistoryReport(url, replyToken) {
+  body = {
+    replyToken: replyToken,
+    messages: [
+      {
+        type: "template",
+        altText: "this is a buttons template",
+        template: {
+          type: "buttons",
+          actions: [
+            {
+              type: "uri",
+              label: "ประวัติของตนเอง",
+              uri: "http://covid.rvconnex.com/health-report"
+            },
+            {
+              type: "uri",
+              label: "ประวัติของสมาชิกทีม",
               uri: "http://covid.rvconnex.com/health-report"
             }
           ],
-          thumbnailImageUrl: "https://www.residencyprograms.biz/wp-content/uploads/2016/03/img-friendly-pediatric-residency-programs-online-1024x700.jpg",
-          title: "Daily Health Report",
-          text: "รายงานสุขภาพประจำวัน"
+          thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
+          title: "ประวัติการรายงาน",
+          text: "History Report"
+        }
+      }
+    ]
+  };
+  return body;
+}
+
+function getBodyNews(url, replyToken) {
+  body = {
+    replyToken: replyToken,
+    messages: [
+      {
+        type: "template",
+        altText: "this is a buttons template",
+        template: {
+          type: "buttons",
+          actions: [
+            {
+              type: "uri",
+              label: "ดูรายการประกาศ",
+              uri: url + "/news"
+            }
+          ],
+          thumbnailImageUrl: "https://cdn3.vectorstock.com/i/1000x1000/26/32/megaphone-announcement-vector-272632.jpg",
+          title: "ประกาศข่าวสาร",
+          text: "Announcement"
         }
       }
     ]
@@ -221,70 +197,6 @@ function getBodySignIn(url, replyToken) {
                   label: 'Sign In',
                   uri: url
                 }
-              }
-            ]
-          }
-        }
-      }
-    ]
-  };
-  return body;
-}
-
-function getBodyAll(data, replyToken) {
-  let contents = [];
-  for (let i in data) {
-    contents.push({
-      type: 'box',
-      layout: 'baseline',
-      contents: [
-        {
-          type: 'text',
-          text: 'Name',
-          weight: 'bold',
-          margin: 'sm',
-          flex: 0
-        },
-        {
-          type: 'text',
-          text: data[i].name,
-          size: 'sm',
-          align: 'end',
-          color: '#aaaaaa'
-        }
-      ]
-    });
-  }
-
-  body = {
-    replyToken: replyToken,
-    messages: [
-      {
-        type: 'flex',
-        altText: 'User Account',
-        contents: {
-          type: 'bubble',
-          hero: {
-            type: 'image',
-            url: URL_LOGO
-          },
-          body: {
-            type: 'box',
-            layout: 'vertical',
-            spacing: 'md',
-            contents: [
-              {
-                type: 'text',
-                text: 'User Account',
-                size: 'xl',
-                weight: 'bold',
-                align: 'center'
-              },
-              {
-                type: 'box',
-                layout: 'vertical',
-                spacing: 'sm',
-                contents: contents
               }
             ]
           }
