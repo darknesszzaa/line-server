@@ -6,6 +6,7 @@ const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants')
 
 const account = async (req, res) => {
   try {
+    console.log(req)
     const cmd = await getCommandDocument()
     let commandStr = cmd.command
     let params = commandStr ? commandStr.split('>') : ''
