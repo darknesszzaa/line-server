@@ -6,23 +6,24 @@ const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
     const value = req.body.events[0].message.text || 'no text'
-    await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
+    const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
+
     console.log('replyToken ', replyToken);
     switch (value) {
       case 'Daily Health Report':
-        body = getBodyDailyHealthReport(url, replyToken);
+        body = getBodyDailyHealthReport(url, userData.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Risk Report':
-        body = getBodyRiskReport(url, replyToken);
+        body = getBodyRiskReport(url, userData.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'History':
-        body = getBodyHistoryReport(url, replyToken);
+        body = getBodyHistoryReport(url, userData.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Notice':
-        body = getBodyNews(url, replyToken);
+        body = getBodyNews(url, userData.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       default:
@@ -30,13 +31,13 @@ const account = async (req, res) => {
     }
     res.status(200).send('success')
   } catch (e) {
-    body = getBodySignIn(url, replyToken)
+    body = getBodySignIn(url, req.body.events[0].source.userId, replyToken)
     line.sendReplyBodyToLine(replyToken, body)
     res.status(200).send('success')
   }
 };
 
-function getBodyDailyHealthReport(url, replyToken) {
+function getBodyDailyHealthReport(url, token, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
@@ -49,7 +50,7 @@ function getBodyDailyHealthReport(url, replyToken) {
             {
               type: "uri",
               label: "รายงานสุขภาพ",
-              uri: url + "/health-report"
+              uri: url + "/health-report/" + token
             }
           ],
           thumbnailImageUrl: "https://c.pshere.com/photos/44/50/checking_checklist_daily_report_data_document_hand_health_healthcare-1001745.jpg!d",
@@ -62,7 +63,7 @@ function getBodyDailyHealthReport(url, replyToken) {
   return body;
 }
 
-function getBodyRiskReport(url, replyToken) {
+function getBodyRiskReport(url, token, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
@@ -75,7 +76,7 @@ function getBodyRiskReport(url, replyToken) {
             {
               type: "uri",
               label: "แบบประเมินความเสี่ยง",
-              uri: url + "/risk-report"
+              uri: url + "/risk-report/" + token
             }
           ],
           thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
@@ -88,7 +89,7 @@ function getBodyRiskReport(url, replyToken) {
   return body;
 }
 
-function getBodyHistoryReport(url, replyToken) {
+function getBodyHistoryReport(url, token, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
@@ -101,12 +102,12 @@ function getBodyHistoryReport(url, replyToken) {
             {
               type: "uri",
               label: "ประวัติของตนเอง",
-              uri: url + "/history"
+              uri: url + "/history/" + token
             },
             {
               type: "uri",
               label: "ประวัติของสมาชิกทีม",
-              uri: url + "/history"
+              uri: url + "/history/" + token
             }
           ],
           thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
@@ -119,7 +120,7 @@ function getBodyHistoryReport(url, replyToken) {
   return body;
 }
 
-function getBodyNews(url, replyToken) {
+function getBodyNews(url, token, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
@@ -132,7 +133,7 @@ function getBodyNews(url, replyToken) {
             {
               type: "uri",
               label: "ดูรายการประกาศ",
-              uri: url + "/news"
+              uri: url + "/news/" + token
             }
           ],
           thumbnailImageUrl: "https://cdn3.vectorstock.com/i/1000x1000/26/32/megaphone-announcement-vector-272632.jpg",
@@ -145,7 +146,7 @@ function getBodyNews(url, replyToken) {
   return body;
 }
 
-function getBodySignIn(url, replyToken) {
+function getBodySignIn(url, userId, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
@@ -195,7 +196,7 @@ function getBodySignIn(url, replyToken) {
                 action: {
                   type: 'uri',
                   label: 'Sign In',
-                  uri: url
+                  uri: url + '/signin-line/' + userId
                 }
               }
             ]
