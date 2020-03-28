@@ -1,10 +1,10 @@
 const line = require('../utils/line')
-const https = require('https');
+const http = require('http');
 let { firestore } = require('../utils/firebase')
 let documentRef = firestore.collection('account')
 let commandDocRef = firestore.collection('command')
 const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants')
-
+const url = 'http://covid.rvconnex.com';
 const account = async (req, res) => {
   try {
     console.log(req.body.events[0])
@@ -17,14 +17,19 @@ const account = async (req, res) => {
     let name = ''
 
     // Verifylogin
-    var client = new HttpClient();
 
-
-    https.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, (response) => {
-      console.log('xxxxxxxxxxx ', response)
+    const status = await http.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, (response) => {
+      return response.statusCode;
     }).on("error", (error) => {
       console.log("Error: " + error.message);
     });
+
+    if (status === 200) {
+      body = getBodySignIn(url, replyToken)
+      line.sendReplyBodyToLine(replyToken, body)
+      res.sendStatus(200)
+      res.send('success')
+    }
 
 
     switch (value.toLocaleUpperCase()) {
@@ -307,6 +312,41 @@ function getBody(url, name, password, replyToken) {
                 action: {
                   type: 'uri',
                   label: 'Open Copy Password',
+                  uri: url
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+  return body
+}
+
+function getBodySignIn(url, replyToken) {
+  body = {
+    replyToken: replyToken,
+    messages: [
+      {
+        type: 'flex',
+        altText: 'Sign In',
+        contents: {
+          footer: {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'spacer',
+                size: 'xxl'
+              },
+              {
+                type: 'button',
+                style: 'primary',
+                color: '#3949ab',
+                action: {
+                  type: 'uri',
+                  label: 'Sign In',
                   uri: url
                 }
               }
