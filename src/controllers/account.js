@@ -42,7 +42,7 @@ function getBodyDailyHealthReport(url, replyToken) {
     messages: [
       {
         type: "template",
-        altText: "this is a buttons template",
+        altText: "health-report",
         template: {
           type: "buttons",
           actions: [
@@ -68,7 +68,7 @@ function getBodyRiskReport(url, replyToken) {
     messages: [
       {
         type: "template",
-        altText: "this is a buttons template",
+        altText: "risk-report",
         template: {
           type: "buttons",
           actions: [
@@ -94,7 +94,7 @@ function getBodyHistoryReport(url, replyToken) {
     messages: [
       {
         type: "template",
-        altText: "this is a buttons template",
+        altText: "history",
         template: {
           type: "buttons",
           actions: [
@@ -125,7 +125,7 @@ function getBodyNews(url, replyToken) {
     messages: [
       {
         type: "template",
-        altText: "this is a buttons template",
+        altText: "news",
         template: {
           type: "buttons",
           actions: [
