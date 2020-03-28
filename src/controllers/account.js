@@ -346,7 +346,7 @@ function getBodySignIn(url, replyToken) {
     messages: [
       {
         type: 'flex',
-        altText: 'Sigin In',
+        altText: 'Sigin In to RV Health Monitoring',
         contents: {
           type: 'bubble',
           hero: {
@@ -368,8 +368,8 @@ function getBodySignIn(url, replyToken) {
             contents: [
               {
                 type: 'text',
-                text: 'Sigin In',
-                size: 'xl',
+                text: 'Sigin In to RV Health Monitoring',
+                size: 'l',
                 weight: 'bold',
                 align: 'center'
               }
@@ -389,7 +389,7 @@ function getBodySignIn(url, replyToken) {
                 color: '#3949ab',
                 action: {
                   type: 'uri',
-                  label: 'Open Copy Password',
+                  label: 'Sign In',
                   uri: url
                 }
               }
