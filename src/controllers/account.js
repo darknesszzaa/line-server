@@ -1,5 +1,6 @@
 const line = require('../utils/line')
 const http = require('http');
+const axios = require("axios");
 let { firestore } = require('../utils/firebase')
 let documentRef = firestore.collection('account')
 let commandDocRef = firestore.collection('command')
@@ -7,7 +8,6 @@ const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants')
 const url = 'http://covid.rvconnex.com';
 const account = async (req, res) => {
   try {
-    console.log(req.body.events[0])
     const cmd = await getCommandDocument()
     let commandStr = cmd.command
     let params = commandStr ? commandStr.split('>') : ''
@@ -17,19 +17,33 @@ const account = async (req, res) => {
     let name = ''
 
     // Verifylogin
+    // let output = '';
+    // const status = await http.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, (response) => {
+    //   res.on('data', (chunk) => {
+    //     output += chunk;
+    //   });
 
-    const status = await http.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId, (response) => {
-      return response.statusCode;
-    }).on("error", (error) => {
-      console.log("Error: " + error.message);
-    });
+    //   res.on('end', () => {
+    //     body = getBodySignIn(url, replyToken)
+    //     line.sendReplyBodyToLine(replyToken, body)
+    //     res.sendStatus(200)
+    //     res.send('success')
+    //   });
+    // }).on("error", (error) => {
+    //   console.log("Error: " + error.message);
+    // });
 
-    if (status === 200) {
-      body = getBodySignIn(url, replyToken)
-      line.sendReplyBodyToLine(replyToken, body)
-      res.sendStatus(200)
-      res.send('success')
+    const response = await axios.get('http://covid.rvconnex.com/authen/verify-line-login/' + req.body.events[0].source.userId);
+    const data = response.data;
+    if (data) {
+      console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+      console.log(data);
     }
+
+    body = getBodySignIn(url, replyToken)
+    line.sendReplyBodyToLine(replyToken, body)
+    res.sendStatus(200)
+    res.send('success')
 
 
     switch (value.toLocaleUpperCase()) {
@@ -58,102 +72,102 @@ const account = async (req, res) => {
         name = params[1]
     }
 
-    const password = randomPassword()
-    let data
-    if (!commandStr) {
-      switch (mode.toLocaleUpperCase()) {
-        case 'NEW':
-        case 'สร้าง':
-        case 'EDIT':
-        case 'แก้ไข':
-        case 'GET':
-        case 'ดู':
-        case 'DELETE':
-        case 'ลบ':
-          line.sendTextReplyToLine(replyToken, BOT_MSG.ACCOUNT)
-          await setCommandDocument({ command: mode })
-          break
-        case 'CLEAR':
-          await setCommandDocument({ command: '' })
-          break
-      }
-    } else {
-      commandStr += `>${value}`
-      await setCommandDocument({ command: commandStr })
-      switch (value.toLocaleUpperCase()) {
-        case 'CLEAR':
-          await setCommandDocument({ command: '' })
-      }
-      if (params.length == 1)
-        line.sendTextReplyToLine(replyToken, BOT_MSG.CONFIRM)
-    }
+    // const password = randomPassword()
+    // let data
+    // if (!commandStr) {
+    //   switch (mode.toLocaleUpperCase()) {
+    //     case 'NEW':
+    //     case 'สร้าง':
+    //     case 'EDIT':
+    //     case 'แก้ไข':
+    //     case 'GET':
+    //     case 'ดู':
+    //     case 'DELETE':
+    //     case 'ลบ':
+    //       line.sendTextReplyToLine(replyToken, BOT_MSG.ACCOUNT)
+    //       await setCommandDocument({ command: mode })
+    //       break
+    //     case 'CLEAR':
+    //       await setCommandDocument({ command: '' })
+    //       break
+    //   }
+    // } else {
+    //   commandStr += `>${value}`
+    //   await setCommandDocument({ command: commandStr })
+    //   switch (value.toLocaleUpperCase()) {
+    //     case 'CLEAR':
+    //       await setCommandDocument({ command: '' })
+    //   }
+    //   if (params.length == 1)
+    //     line.sendTextReplyToLine(replyToken, BOT_MSG.CONFIRM)
+    // }
 
-    if (params.length == 2) {
-      await setCommandDocument({ command: '' })
-    }
+    // if (params.length == 2) {
+    //   await setCommandDocument({ command: '' })
+    // }
 
-    if (
-      params.length == 2 &&
-      (value == 'ใช่' || value.toLocaleUpperCase() == 'YES')
-    ) {
-      switch (mode.toLocaleUpperCase()) {
-        case 'NEW':
-        case 'สร้าง':
-          data = await getDocument(name)
-          if (!data) {
-            setDocument(name, {
-              name: name,
-              password: password
-            })
-            url = 'http://covid.rvconnex.com'
-            body = getBody(url, name, password, replyToken)
-            line.sendReplyBodyToLine(replyToken, body)
-          }
+    // if (
+    //   params.length == 2 &&
+    //   (value == 'ใช่' || value.toLocaleUpperCase() == 'YES')
+    // ) {
+    //   switch (mode.toLocaleUpperCase()) {
+    //     case 'NEW':
+    //     case 'สร้าง':
+    //       data = await getDocument(name)
+    //       if (!data) {
+    //         setDocument(name, {
+    //           name: name,
+    //           password: password
+    //         })
+    //         url = 'http://covid.rvconnex.com'
+    //         body = getBody(url, name, password, replyToken)
+    //         line.sendReplyBodyToLine(replyToken, body)
+    //       }
 
-          break
-        case 'EDIT':
-        case 'แก้ไข':
-          data = await getDocument(name)
-          if (data) {
-            setDocument(name, {
-              name: name,
-              password: password
-            })
-            url = 'http://covid.rvconnex.com'
-            body = getBody(url, name, password, replyToken)
-            line.sendReplyBodyToLine(replyToken, body)
-          }
-          break
-        case 'GET':
-        case 'ดู':
-          data = await getDocument(name)
-          if (data) {
-            url = url = 'http://covid.rvconnex.com'
-            body = getBody(url, name, data.password, replyToken)
-            line.sendReplyBodyToLine(replyToken, body)
-          }
-          break
-        case 'DELETE':
-        case 'ลบ':
-          data = await getDocument(name)
-          if (data) {
-            deleteDocument(name)
-            line.sendTextReplyToLine(
-              replyToken,
-              BOT_MSG.DELETE.replace(`{name}`, name)
-            )
-          }
-          break
-        case 'ALL':
-        case 'บัญชี':
-          const allData = await getAllDocument()
-          if (allData) {
-            body = getBodyAll(allData, replyToken)
-            line.sendReplyBodyToLine(replyToken, body)
-          }
-          break
-      }
-    }
+    //       break
+    //     case 'EDIT':
+    //     case 'แก้ไข':
+    //       data = await getDocument(name)
+    //       if (data) {
+    //         setDocument(name, {
+    //           name: name,
+    //           password: password
+    //         })
+    //         url = 'http://covid.rvconnex.com'
+    //         body = getBody(url, name, password, replyToken)
+    //         line.sendReplyBodyToLine(replyToken, body)
+    //       }
+    //       break
+    //     case 'GET':
+    //     case 'ดู':
+    //       data = await getDocument(name)
+    //       if (data) {
+    //         url = url = 'http://covid.rvconnex.com'
+    //         body = getBody(url, name, data.password, replyToken)
+    //         line.sendReplyBodyToLine(replyToken, body)
+    //       }
+    //       break
+    //     case 'DELETE':
+    //     case 'ลบ':
+    //       data = await getDocument(name)
+    //       if (data) {
+    //         deleteDocument(name)
+    //         line.sendTextReplyToLine(
+    //           replyToken,
+    //           BOT_MSG.DELETE.replace(`{name}`, name)
+    //         )
+    //       }
+    //       break
+    //     case 'ALL':
+    //     case 'บัญชี':
+    //       const allData = await getAllDocument()
+    //       if (allData) {
+    //         body = getBodyAll(allData, replyToken)
+    //         line.sendReplyBodyToLine(replyToken, body)
+    //       }
+    //       break
+    //   }
+    // }
 
     res.sendStatus(200)
     res.send('success')
