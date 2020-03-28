@@ -346,7 +346,7 @@ function getBodySignIn(url, replyToken) {
     messages: [
       {
         type: 'flex',
-        altText: 'Sigin In to RV Health Monitoring',
+        altText: 'Sigin In',
         contents: {
           type: 'bubble',
           hero: {
@@ -369,7 +369,7 @@ function getBodySignIn(url, replyToken) {
               {
                 type: 'text',
                 text: 'Sigin In to RV Health Monitoring',
-                size: 'l',
+                size: 'xl',
                 weight: 'bold',
                 align: 'center'
               }
