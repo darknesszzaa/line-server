@@ -5,7 +5,7 @@ module.exports = {
     PROJECT_ID: 'rv-health-monitor', // ใส่ projectId fore Firebase
     KEY_PATH: './src/key.json' // ที่อยู่ของ key json ของ firebase ไฟล์
   },
-  URL_COPY_PASSWORD: 'https://example.com/v1/api/copy?text=', // แก้ไข url ที่ deploy เพื่อใช้งานจริงได้เลย
+  URL_COPY_PASSWORD: 'https://rv-health.herokuapp.com/v1/api/copy?text=', // แก้ไข url ที่ deploy เพื่อใช้งานจริงได้เลย
   URL_LOGO: 'https://images2.imgbox.com/7e/0b/Cz8AV24h_o.png',
   BOT_MSG: {
     ACCOUNT: 'กรุณาระบุชื่อ Account ที่ต้องการ',
