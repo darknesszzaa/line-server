@@ -146,53 +146,8 @@ function getBodyDailyHealthReport(url, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        type: "template",
-        altText: "This is a buttons template",
-        template: {
-            type: "buttons",
-            thumbnailImageUrl: "https://example.com/bot/images/image.jpg",
-            imageAspectRatio: "rectangle",
-            imageSize: "cover",
-            imageBackgroundColor: "#FFFFFF",
-            title: "Menu",
-            text: "Please select",
-            defaultAction: {
-                type: "uri",
-                label: "View detail",
-                uri: url
-            },
-            actions: [
-                {
-                  type: "postback",
-                  label: "Buy",
-                  uri: url
-                },
-                {
-                  type: "postback",
-                  label: "Add to cart",
-                  uri: url
-                },
-                {
-                  type: "uri",
-                  label: "View detail",
-                  uri: url
-                }
-            ]
-        }
-      }
-    ]
-  }
-  return body
-}
-
-
-function getBody(url, name, password, replyToken) {
-  body = {
-    replyToken: replyToken,
-    messages: [
-      {
         type: 'flex',
-        altText: 'User Account',
+        altText: 'Daily Health',
         contents: {
           type: 'bubble',
           hero: {
@@ -214,57 +169,10 @@ function getBody(url, name, password, replyToken) {
             contents: [
               {
                 type: 'text',
-                text: 'User Account',
+                text: 'Daily Health Report',
                 size: 'xl',
                 weight: 'bold',
                 align: 'center'
-              },
-              {
-                type: 'box',
-                layout: 'vertical',
-                spacing: 'sm',
-                contents: [
-                  {
-                    type: 'box',
-                    layout: 'baseline',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Name',
-                        weight: 'bold',
-                        margin: 'sm',
-                        flex: 0
-                      },
-                      {
-                        type: 'text',
-                        text: name,
-                        size: 'sm',
-                        align: 'end',
-                        color: '#aaaaaa'
-                      }
-                    ]
-                  },
-                  {
-                    type: 'box',
-                    layout: 'baseline',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Password',
-                        weight: 'bold',
-                        margin: 'sm',
-                        flex: 0
-                      },
-                      {
-                        type: 'text',
-                        text: password,
-                        size: 'sm',
-                        align: 'end',
-                        color: '#aaaaaa'
-                      }
-                    ]
-                  }
-                ]
               }
             ]
           },
@@ -282,7 +190,7 @@ function getBody(url, name, password, replyToken) {
                 color: '#3949ab',
                 action: {
                   type: 'uri',
-                  label: 'Open Copy Password',
+                  label: 'Daily Health Report',
                   uri: url
                 }
               }
