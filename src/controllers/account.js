@@ -10,7 +10,7 @@ const account = async (req, res) => {
 
     console.log(value)
 
-    switch (value.toLocaleUpperCase()) {
+    switch (value) {
       case 'Daily Health Report':
         body = getBodyDailyHealthReport(url, replyToken)
         line.sendReplyBodyToLine(replyToken, body)
@@ -146,56 +146,38 @@ function getBodyDailyHealthReport(url, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        type: 'flex',
-        altText: 'Daily Health',
-        contents: {
-          type: 'bubble',
-          hero: {
-            type: 'image',
-            url: URL_LOGO,
-            action: {
-              type: 'uri',
-              uri: url
-            }
-          },
-          body: {
-            type: 'box',
-            layout: 'vertical',
-            spacing: 'md',
-            action: {
-              type: 'uri',
-              uri: url
+        type: "template",
+        altText: "This is a buttons template",
+        template: {
+            type: "buttons",
+            thumbnailImageUrl: "https://example.com/bot/images/image.jpg",
+            imageAspectRatio: "rectangle",
+            imageSize: "cover",
+            imageBackgroundColor: "#FFFFFF",
+            title: "Menu",
+            text: "Please select",
+            defaultAction: {
+                type: "uri",
+                label: "View detail",
+                uri: url
             },
-            contents: [
-              {
-                type: 'text',
-                text: 'Daily Health Report',
-                size: 'xl',
-                weight: 'bold',
-                align: 'center'
-              }
-            ]
-          },
-          footer: {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'spacer',
-                size: 'xxl'
-              },
-              {
-                type: 'button',
-                style: 'primary',
-                color: '#3949ab',
-                action: {
-                  type: 'uri',
-                  label: 'Daily Health Report',
+            actions: [
+                {
+                  type: "postback",
+                  label: "Buy",
+                  uri: url
+                },
+                {
+                  type: "postback",
+                  label: "Add to cart",
+                  uri: url
+                },
+                {
+                  type: "uri",
+                  label: "View detail",
                   uri: url
                 }
-              }
             ]
-          }
         }
       }
     ]
