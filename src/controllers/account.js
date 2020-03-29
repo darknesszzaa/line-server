@@ -4,9 +4,12 @@ const { URL_API } = require('../constants');
 const url = URL_API;
 const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
+  console.log('xxxxxxxx')
   try {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
+
+    console.log(userData)
 
     switch (value) {
       case 'Daily Health Report':
@@ -18,7 +21,11 @@ const account = async (req, res) => {
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'History':
-        body = getBodyHistoryReport(url, userData.data.token, userData.data.id, replyToken);
+        if (userData.data.isLeader) {
+          body = getBodyHistoryLeaderReport(url, userData.data.token, userData.data.id, replyToken);
+        } else {
+          body = getBodyHistoryReport(url, userData.data.token, userData.data.id, replyToken);
+        }
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Notice':
@@ -89,6 +96,32 @@ function getBodyRiskReport(url, token, replyToken) {
 }
 
 function getBodyHistoryReport(url, token, id, replyToken) {
+  body = {
+    replyToken: replyToken,
+    messages: [
+      {
+        type: "template",
+        altText: "history",
+        template: {
+          type: "buttons",
+          actions: [
+            {
+              type: "uri",
+              label: "ประวัติของตนเอง",
+              uri: url + "/history/" + token + '/' + id
+            }
+          ],
+          thumbnailImageUrl: "https://www.homeworkrecords.net/wp-content/uploads/2019/08/Information.jpg",
+          title: "ประวัติการรายงาน",
+          text: "History Report"
+        }
+      }
+    ]
+  };
+  return body;
+}
+
+function getBodyHistoryLeaderReport(url, token, id, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
