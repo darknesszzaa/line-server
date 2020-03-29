@@ -23,6 +23,7 @@ const account = async (req, res) => {
     switch (value) {
       case 'Daily Health Report':
         body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
+        console.log(body)
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Risk Report':
@@ -43,6 +44,7 @@ const account = async (req, res) => {
         break;
       case 'Timeline':
         body = getBodyTimeline(url, userData.data.token, replyToken);
+        console.log(body)
         line.sendReplyBodyToLine(replyToken, body);
         break;
       default:
@@ -93,6 +95,7 @@ function getBodyTimeline(url, token, replyToken) {
     "messages": [
       {
         "type": "bubble",
+        "altText": "Timeline",
         "size": "giga",
         "header": {
           "type": "box",
@@ -409,11 +412,6 @@ function getBodyTimeline(url, token, replyToken) {
             }
           ]
         },
-        "styles": {
-          "footer": {
-            "backgroundColor": "#FFFFFF"
-          }
-        }
       }
     ]
   };
