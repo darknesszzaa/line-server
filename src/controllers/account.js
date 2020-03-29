@@ -8,7 +8,7 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
-    console.log(req.body.events[0].message)
+    console.log(req.body.events[0]);
 
     switch (value) {
       case 'Daily Health Report':
