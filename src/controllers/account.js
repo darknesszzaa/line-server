@@ -5,10 +5,20 @@ const url = URL_API;
 const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
+
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
     console.log(req.body.events[0]);
+    if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
+      await axios.post(url + '/timeline', {
+        userId: req.body.events[0].source.userId, address: req.body.events[0].message.address,
+        title: 'My Location', latitude: req.body.events[0].message.latitude, longitude: req.body.events[0].message.longitude
+      }, {
+        headers: { Authorization: "Bearer " + userData.data.token }
+      });
+    }
+
 
     switch (value) {
       case 'Daily Health Report':
