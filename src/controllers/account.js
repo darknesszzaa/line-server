@@ -402,7 +402,7 @@ function getBodyTimeline(url, token, replyToken) {
               action: {
                 type: "uri",
                 label: "ดูแผนที่",
-                uri: "http://linecorp.com/"
+                uri: url
               },
               color: "#0367D3",
               flex: 1,
