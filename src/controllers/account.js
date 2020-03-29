@@ -210,7 +210,7 @@ function getBodyTimeline(url, token, replyToken) {
                               }
                             ],
                             width: "2px",
-                            backgroundColor: "#B7B7B7"
+                            backgroundColor: "#6486E3"
                           },
                           {
                             type: "filler"
@@ -404,7 +404,7 @@ function getBodyTimeline(url, token, replyToken) {
                 action: {
                   type: "uri",
                   label: "ดูแผนที่",
-                  uri: url
+                  uri: 'https://www.google.co.th/maps/@13.9999013,100.6140252,15z?hl=en'
                 },
                 color: "#0367D3",
                 flex: 1,
