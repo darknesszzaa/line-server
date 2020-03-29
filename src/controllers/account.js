@@ -47,9 +47,15 @@ const account = async (req, res) => {
         });
         body = getBodyTimeline(url, userData.data.token, replyToken);
         if (timelineList.data.length === 1) {
+          if (!timelineList.data[0].title.title) {
+            timelineList.data[0].title = '';
+          }
           locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
           body.messages[0].contents.body.contents.push(locationJounry);
         } else if (timelineList.data.length > 1) {
+          if (!timelineList.data[0].title.title) {
+            timelineList.data[0].title = '';
+          }
           locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
           body.messages[0].contents.body.contents.push(locationJounry);
 
@@ -57,6 +63,9 @@ const account = async (req, res) => {
             const timeline = timelineList.data[index];
             lineJounry = getLineJounry();
             body.messages[0].contents.body.contents.push(lineJounry);
+            if (!timeline.title) {
+              timeline.title = '';
+            }
             locationJounry = getLocationJounry(timeline.date, timeline.title, timeline.address);
             body.messages[0].contents.body.contents.push(locationJounry);
           }
@@ -174,8 +183,9 @@ function getLocationJounry(date, title, address) {
       {
         type: "text",
         text: new Date(date).toLocaleString(),
-        size: "sm",
-        gravity: "center"
+        size: "xxs",
+        position: "relative",
+        wrap: true
       },
       {
         type: "box",
@@ -209,7 +219,8 @@ function getLocationJounry(date, title, address) {
         text: title + " " + address,
         gravity: "center",
         flex: 4,
-        size: "sm"
+        size: "xxs",
+        wrap: true
       }
     ],
     spacing: "lg",
