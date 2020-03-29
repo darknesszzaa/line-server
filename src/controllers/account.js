@@ -9,7 +9,6 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
-    console.log(req.body.events[0]);
     if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
       await axios.post(url + '/timeline', {
         userId: req.body.events[0].source.userId, address: req.body.events[0].message.address,
@@ -224,7 +223,7 @@ function getLocationJounry(date, title, address) {
       }
     ],
     spacing: "lg",
-    cornerRadius: "30px",
+    cornerRadius: "0px",
     margin: "xl"
   };
   return data;
