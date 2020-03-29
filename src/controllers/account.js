@@ -15,6 +15,8 @@ const account = async (req, res) => {
       }, {
         headers: { Authorization: "Bearer " + userData.data.token }
       });
+      line.sendTextReplyToLine(replyToken, 'บันทึกข้อมูลเรียบร้อยแล้ว');
+      res.status(200).send('success');
     }
 
 
