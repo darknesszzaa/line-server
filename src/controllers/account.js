@@ -18,7 +18,7 @@ const account = async (req, res) => {
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'History':
-        body = getBodyHistoryReport(url, userData.data.token, replyToken);
+        body = getBodyHistoryReport(url, userData.data.token, userData.data.id, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Notice':
@@ -88,7 +88,7 @@ function getBodyRiskReport(url, token, replyToken) {
   return body;
 }
 
-function getBodyHistoryReport(url, token, replyToken) {
+function getBodyHistoryReport(url, token, id, replyToken) {
   body = {
     replyToken: replyToken,
     messages: [
@@ -101,12 +101,12 @@ function getBodyHistoryReport(url, token, replyToken) {
             {
               type: "uri",
               label: "ประวัติของตนเอง",
-              uri: url + "/history/" + token
+              uri: url + "/history/" + token + '/' + id
             },
             {
               type: "uri",
               label: "ประวัติของสมาชิกทีม",
-              uri: url + "/history/teammember/" + token
+              uri: url + "/history/teammember/" + token + '/' + id
             }
           ],
           thumbnailImageUrl: "https://www.homeworkrecords.net/wp-content/uploads/2019/08/Information.jpg",
