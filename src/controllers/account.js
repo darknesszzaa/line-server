@@ -89,8 +89,8 @@ function getBodyDailyHealthReport(url, token, replyToken) {
 
 function getBodyTimeline(url, token, replyToken) {
   body = {
-    replyToken: replyToken,
-    messages: [
+    "replyToken": replyToken,
+    "messages": [
       {
         "type": "bubble",
         "size": "giga",
