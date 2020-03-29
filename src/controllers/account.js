@@ -1,14 +1,13 @@
 const line = require('../utils/line');
 const axios = require("axios");
-const { URL_COPY_PASSWORD, URL_LOGO, BOT_MSG } = require('../constants');
-const url = 'http://covid.rvconnex.com';
+const { URL_API } = require('../constants');
+const url = URL_API;
 const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
-    console.log('userData ', userData.data.token);
     switch (value) {
       case 'Daily Health Report':
         body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
