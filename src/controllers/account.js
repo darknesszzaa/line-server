@@ -59,6 +59,7 @@ function getBodyDailyHealthReport(url, token, replyToken) {
             },
             {
               type: "location",
+              title: "My Location",
               label: "รายงานการเดินทาง",
             }
           ],
