@@ -5,7 +5,7 @@ const url = URL_API;
 const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
-
+    process.env.TZ = 'asia/bangkok';
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
@@ -181,7 +181,9 @@ function getLocationJounry(date, title, address) {
     contents: [
       {
         type: "text",
-        text: new Date(date).toLocaleString("th-TH"),
+        text: new Date(date).toLocaleString('th-TH', {
+          timeZone: 'asia/bangkok'
+        }),
         size: "xxs",
         position: "relative",
         wrap: true
