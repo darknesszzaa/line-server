@@ -92,327 +92,326 @@ function getBodyTimeline(url, token, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        type: "bubble",
-        altText: "Timeline",
-        size: "giga",
-        header: {
-          type: "box",
-          layout: "vertical",
-          contents: [
+        "type": "bubble",
+        "size": "giga",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
             {
-              type: "box",
-              layout: "vertical",
-              contents: [
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
                 {
-                  type: "text",
-                  text: "ประวัติการเดินทางย้อนหลัง",
-                  color: "#ffffff",
-                  size: "lg",
-                  flex: 1,
-                  weight: "bold",
-                  margin: "none"
+                  "type": "text",
+                  "text": "ประวัติการเดินทางย้อนหลัง",
+                  "color": "#ffffff",
+                  "size": "lg",
+                  "flex": 1,
+                  "weight": "bold",
+                  "margin": "none"
                 }
               ]
             }
           ],
-          paddingAll: "20px",
-          backgroundColor: "#0367D3",
-          spacing: "md",
-          height: "60px",
-          paddingTop: "22px"
+          "paddingAll": "20px",
+          "backgroundColor": "#0367D3",
+          "spacing": "md",
+          "height": "60px",
+          "paddingTop": "22px"
         },
-        body: {
-          type: "box",
-          layout: "vertical",
-          contents: [
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
             {
-              type: "box",
-              layout: "horizontal",
-              contents: [
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
                 {
-                  type: "text",
-                  text: "20:30",
-                  size: "sm",
-                  gravity: "center"
+                  "type": "text",
+                  "text": "20:30",
+                  "size": "sm",
+                  "gravity": "center"
                 },
                 {
-                  type: "box",
-                  layout: "vertical",
-                  contents: [
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
                     {
-                      type: "filler"
+                      "type": "filler"
                     },
                     {
-                      type: "box",
-                      layout: "vertical",
-                      contents: [
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
                         {
-                          type: "filler"
+                          "type": "filler"
                         }
                       ],
-                      cornerRadius: "30px",
-                      height: "12px",
-                      width: "12px",
-                      borderColor: "#6486E3",
-                      borderWidth: "2px"
+                      "cornerRadius": "30px",
+                      "height": "12px",
+                      "width": "12px",
+                      "borderColor": "#6486E3",
+                      "borderWidth": "2px"
                     },
                     {
-                      type: "filler"
+                      "type": "filler"
                     }
                   ],
-                  flex: 0
+                  "flex": 0
                 },
                 {
-                  type: "text",
-                  text: "Akihabara",
-                  gravity: "center",
-                  flex: 4,
-                  size: "sm"
+                  "type": "text",
+                  "text": "Akihabara",
+                  "gravity": "center",
+                  "flex": 4,
+                  "size": "sm"
                 }
               ],
-              spacing: "lg",
-              cornerRadius: "30px",
-              margin: "xl"
+              "spacing": "lg",
+              "cornerRadius": "30px",
+              "margin": "xl"
             },
             {
-              type: "box",
-              layout: "horizontal",
-              contents: [
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
                 {
-                  type: "box",
-                  layout: "baseline",
-                  contents: [
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
                     {
-                      type: "filler"
+                      "type": "filler"
                     }
                   ],
-                  flex: 1
+                  "flex": 1
                 },
                 {
-                  type: "box",
-                  layout: "vertical",
-                  contents: [
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
                     {
-                      type: "box",
-                      layout: "horizontal",
-                      contents: [
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
                         {
-                          type: "filler"
+                          "type": "filler"
                         },
                         {
-                          type: "box",
-                          layout: "vertical",
-                          contents: [
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
                             {
-                              type: "filler"
+                              "type": "filler"
                             }
                           ],
-                          width: "2px",
-                          backgroundColor: "#B7B7B7"
+                          "width": "2px",
+                          "backgroundColor": "#B7B7B7"
                         },
                         {
-                          type: "filler"
+                          "type": "filler"
                         }
                       ],
-                      flex: 1
+                      "flex": 1
                     }
                   ],
-                  width: "12px"
+                  "width": "12px"
                 },
                 {
-                  type: "text",
-                  gravity: "center",
-                  flex: 4,
-                  size: "xs",
-                  color: "#8c8c8c",
-                  text: " "
+                  "type": "text",
+                  "gravity": "center",
+                  "flex": 4,
+                  "size": "xs",
+                  "color": "#8c8c8c",
+                  "text": " "
                 }
               ],
-              spacing: "lg",
-              height: "64px"
+              "spacing": "lg",
+              "height": "64px"
             },
             {
-              type: "box",
-              layout: "horizontal",
-              contents: [
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
                 {
-                  type: "box",
-                  layout: "horizontal",
-                  contents: [
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
                     {
-                      type: "text",
-                      text: "20:34",
-                      gravity: "center",
-                      size: "sm"
+                      "type": "text",
+                      "text": "20:34",
+                      "gravity": "center",
+                      "size": "sm"
                     }
                   ],
-                  flex: 1
+                  "flex": 1
                 },
                 {
-                  type: "box",
-                  layout: "vertical",
-                  contents: [
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
                     {
-                      type: "filler"
+                      "type": "filler"
                     },
                     {
-                      type: "box",
-                      layout: "vertical",
-                      contents: [
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
                         {
-                          type: "filler"
+                          "type": "filler"
                         }
                       ],
-                      cornerRadius: "30px",
-                      width: "12px",
-                      height: "12px",
-                      borderWidth: "2px",
-                      borderColor: "#6486E3"
+                      "cornerRadius": "30px",
+                      "width": "12px",
+                      "height": "12px",
+                      "borderWidth": "2px",
+                      "borderColor": "#6486E3"
                     },
                     {
-                      type: "filler"
+                      "type": "filler"
                     }
                   ],
-                  flex: 0
+                  "flex": 0
                 },
                 {
-                  type: "text",
-                  text: "Ochanomizu",
-                  gravity: "center",
-                  flex: 4,
-                  size: "sm"
+                  "type": "text",
+                  "text": "Ochanomizu",
+                  "gravity": "center",
+                  "flex": 4,
+                  "size": "sm"
                 }
               ],
-              spacing: "lg",
-              cornerRadius: "30px"
+              "spacing": "lg",
+              "cornerRadius": "30px"
             },
             {
-              type: "box",
-              layout: "horizontal",
-              contents: [
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
                 {
-                  type: "box",
-                  layout: "baseline",
-                  contents: [
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
                     {
-                      type: "filler"
+                      "type": "filler"
                     }
                   ],
-                  flex: 1
+                  "flex": 1
                 },
                 {
-                  type: "box",
-                  layout: "vertical",
-                  contents: [
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
                     {
-                      type: "box",
-                      layout: "horizontal",
-                      contents: [
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
                         {
-                          type: "filler"
+                          "type": "filler"
                         },
                         {
-                          type: "box",
-                          layout: "vertical",
-                          contents: [
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
                             {
-                              type: "filler"
+                              "type": "filler"
                             }
                           ],
-                          width: "2px",
-                          backgroundColor: "#6486E3"
+                          "width": "2px",
+                          "backgroundColor": "#6486E3"
                         },
                         {
-                          type: "filler"
+                          "type": "filler"
                         }
                       ],
-                      flex: 1
+                      "flex": 1
                     }
                   ],
-                  width: "12px"
+                  "width": "12px"
                 },
                 {
-                  type: "text",
-                  text: " ",
-                  gravity: "center",
-                  flex: 4,
-                  size: "xs",
-                  color: "#8c8c8c"
+                  "type": "text",
+                  "text": " ",
+                  "gravity": "center",
+                  "flex": 4,
+                  "size": "xs",
+                  "color": "#8c8c8c"
                 }
               ],
-              spacing: "lg",
-              height: "64px"
+              "spacing": "lg",
+              "height": "64px"
             },
             {
-              type: "box",
-              layout: "horizontal",
-              contents: [
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
                 {
-                  type: "text",
-                  text: "20:40",
-                  gravity: "center",
-                  size: "sm"
+                  "type": "text",
+                  "text": "20:40",
+                  "gravity": "center",
+                  "size": "sm"
                 },
                 {
-                  type: "box",
-                  layout: "vertical",
-                  contents: [
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
                     {
-                      type: "filler"
+                      "type": "filler"
                     },
                     {
-                      type: "box",
-                      layout: "vertical",
-                      contents: [
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
                         {
-                          type: "filler"
+                          "type": "filler"
                         }
                       ],
-                      cornerRadius: "30px",
-                      width: "12px",
-                      height: "12px",
-                      borderColor: "#6486E3",
-                      borderWidth: "2px"
+                      "cornerRadius": "30px",
+                      "width": "12px",
+                      "height": "12px",
+                      "borderColor": "#6486E3",
+                      "borderWidth": "2px"
                     },
                     {
-                      type: "filler"
+                      "type": "filler"
                     }
                   ],
-                  flex: 0
+                  "flex": 0
                 },
                 {
-                  type: "text",
-                  text: "Shinjuku",
-                  gravity: "center",
-                  flex: 4,
-                  size: "sm"
+                  "type": "text",
+                  "text": "Shinjuku",
+                  "gravity": "center",
+                  "flex": 4,
+                  "size": "sm"
                 }
               ],
-              spacing: "lg",
-              cornerRadius: "30px"
+              "spacing": "lg",
+              "cornerRadius": "30px"
             }
           ]
         },
-        footer: {
-          type: "box",
-          layout: "vertical",
-          contents: [
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
             {
-              type: "button",
-              action: {
-                type: "uri",
-                label: "ดูแผนที่",
-                uri: url
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "ดูแผนที่",
+                "uri": "http://covid.rvconnex.com/dashboard"
               },
-              color: "#0367D3",
-              flex: 1,
-              style: "primary"
+              "color": "#0367D3",
+              "flex": 1,
+              "style": "primary"
             }
           ]
         },
-        styles: {
-          footer: {
-            backgroundColor: "#FFFFFF"
+        "styles": {
+          "footer": {
+            "backgroundColor": "#FFFFFF"
           }
         }
       }
