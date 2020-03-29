@@ -45,13 +45,13 @@ const account = async (req, res) => {
         });
         body = getBodyTimeline(url, userData.data.token, replyToken);
         if (timelineList.data.length === 1) {
-          if (!timelineList.data[0].title.title) {
+          if (!timelineList.data[0].title) {
             timelineList.data[0].title = '';
           }
           locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
           body.messages[0].contents.body.contents.push(locationJounry);
         } else if (timelineList.data.length > 1) {
-          if (!timelineList.data[0].title.title) {
+          if (!timelineList.data[0].title) {
             timelineList.data[0].title = '';
           }
           locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
