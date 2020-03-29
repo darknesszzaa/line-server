@@ -181,7 +181,7 @@ function getLocationJounry(date, title, address) {
     contents: [
       {
         type: "text",
-        text: new Date(date).toLocaleString(),
+        text: new Date(date).toLocaleString('th-TH'),
         size: "xxs",
         position: "relative",
         wrap: true
