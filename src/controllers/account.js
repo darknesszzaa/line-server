@@ -107,10 +107,10 @@ function getBodyHistoryReport(url, token, replyToken) {
             {
               type: "uri",
               label: "ประวัติของสมาชิกทีม",
-              uri: url + "/history?token=" + token
+              uri: url + "/history/teammember?token=" + token
             }
           ],
-          thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
+          thumbnailImageUrl: "https://www.homeworkrecords.net/wp-content/uploads/2019/08/Information.jpg",
           title: "ประวัติการรายงาน",
           text: "History Report"
         }
