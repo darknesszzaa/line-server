@@ -49,7 +49,7 @@ function getBodyDailyHealthReport(url, token, replyToken) {
             {
               type: "uri",
               label: "รายงานสุขภาพ",
-              uri: url + "/health-report?token=" + token
+              uri: url + "/health-report;token=" + token
             }
           ],
           thumbnailImageUrl: "https://c.pshere.com/photos/44/50/checking_checklist_daily_report_data_document_hand_health_healthcare-1001745.jpg!d",
@@ -75,7 +75,7 @@ function getBodyRiskReport(url, token, replyToken) {
             {
               type: "uri",
               label: "แบบประเมินความเสี่ยง",
-              uri: url + "/risk-report?token=" + token
+              uri: url + "/risk-report;token=" + token
             }
           ],
           thumbnailImageUrl: "https://png.pngtree.com/png-vector/20190622/ourlarge/pngtree-checklistcheckexpertiselistclipboard-flat-color-icon-vec-png-image_1490531.jpg",
@@ -101,12 +101,12 @@ function getBodyHistoryReport(url, token, replyToken) {
             {
               type: "uri",
               label: "ประวัติของตนเอง",
-              uri: url + "/history?token=" + token
+              uri: url + "/history;token=" + token
             },
             {
               type: "uri",
               label: "ประวัติของสมาชิกทีม",
-              uri: url + "/history/teammember?token=" + token
+              uri: url + "/history/teammember;token=" + token
             }
           ],
           thumbnailImageUrl: "https://www.homeworkrecords.net/wp-content/uploads/2019/08/Information.jpg",
@@ -132,7 +132,7 @@ function getBodyNews(url, token, replyToken) {
             {
               type: "uri",
               label: "ดูรายการประกาศ",
-              uri: url + "/news?token=" + token
+              uri: url + "/news;token=" + token
             }
           ],
           thumbnailImageUrl: "https://cdn3.vectorstock.com/i/1000x1000/26/32/megaphone-announcement-vector-272632.jpg",
@@ -195,7 +195,7 @@ function getBodySignIn(url, userId, replyToken) {
                 action: {
                   type: 'uri',
                   label: 'Sign In',
-                  uri: url + '/signin-line?userId=' + userId
+                  uri: url + '/signin-line;token=' + userId
                 }
               }
             ]
