@@ -42,7 +42,25 @@ const account = async (req, res) => {
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Timeline':
+        const timelineList = await axios.get(url + '/timeline', {
+          headers: { Authorization: "Bearer " + userData.data.token }
+        });
         body = getBodyTimeline(url, userData.data.token, replyToken);
+        if (timelineList.data.length === 1) {
+          locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
+          body.messages[0].contents.body.contents.push(locationJounry);
+        } else if (timelineList.data.length > 1) {
+          locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
+          body.messages[0].contents.body.contents.push(locationJounry);
+
+          for (let index = 1; index < timelineList.data.length; index++) {
+            const timeline = timelineList.data[index];
+            lineJounry = getLineJounry();
+            body.messages[0].contents.body.contents.push(lineJounry);
+            locationJounry = getLocationJounry(timeline.date, timeline.title, timeline.address);
+            body.messages[0].contents.body.contents.push(locationJounry);
+          }
+        }
         line.sendReplyBodyToLine(replyToken, body);
         break;
       default:
@@ -87,6 +105,120 @@ function getBodyDailyHealthReport(url, token, replyToken) {
   return body;
 }
 
+function getLineJounry() {
+  let data = {
+    type: "box",
+    layout: "horizontal",
+    contents: [
+      {
+        type: "box",
+        layout: "baseline",
+        contents: [
+          {
+            type: "filler"
+          }
+        ],
+        flex: 1
+      },
+      {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "box",
+            layout: "horizontal",
+            contents: [
+              {
+                type: "filler"
+              },
+              {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                  {
+                    type: "filler"
+                  }
+                ],
+                width: "2px",
+                backgroundColor: "#6486E3"
+              },
+              {
+                type: "filler"
+              }
+            ],
+            flex: 1
+          }
+        ],
+        width: "12px"
+      },
+      {
+        type: "text",
+        gravity: "center",
+        flex: 4,
+        size: "xs",
+        color: "#8c8c8c",
+        text: " "
+      }
+    ],
+    spacing: "lg",
+    height: "64px"
+  };
+  return data;
+}
+
+function getLocationJounry(date, title, address) {
+  data = {
+    type: "box",
+    layout: "horizontal",
+    contents: [
+      {
+        type: "text",
+        text: new Date(date).toLocaleString(),
+        size: "sm",
+        gravity: "center"
+      },
+      {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "filler"
+          },
+          {
+            type: "box",
+            layout: "vertical",
+            contents: [
+              {
+                type: "filler"
+              }
+            ],
+            cornerRadius: "30px",
+            height: "12px",
+            width: "12px",
+            borderColor: "#6486E3",
+            borderWidth: "2px"
+          },
+          {
+            type: "filler"
+          }
+        ],
+        flex: 0
+      },
+      {
+        type: "text",
+        text: title + " " + address,
+        gravity: "center",
+        flex: 4,
+        size: "sm"
+      }
+    ],
+    spacing: "lg",
+    cornerRadius: "30px",
+    margin: "xl"
+  };
+  return data;
+}
+
 function getBodyTimeline(url, token, replyToken) {
   body = {
     replyToken: replyToken,
@@ -126,274 +258,7 @@ function getBodyTimeline(url, token, replyToken) {
           body: {
             type: "box",
             layout: "vertical",
-            contents: [
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "text",
-                    text: "20:30",
-                    size: "sm",
-                    gravity: "center"
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "filler"
-                      },
-                      {
-                        type: "box",
-                        layout: "vertical",
-                        contents: [
-                          {
-                            type: "filler"
-                          }
-                        ],
-                        cornerRadius: "30px",
-                        height: "12px",
-                        width: "12px",
-                        borderColor: "#6486E3",
-                        borderWidth: "2px"
-                      },
-                      {
-                        type: "filler"
-                      }
-                    ],
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "Akihabara",
-                    gravity: "center",
-                    flex: 4,
-                    size: "sm"
-                  }
-                ],
-                spacing: "lg",
-                cornerRadius: "30px",
-                margin: "xl"
-              },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    contents: [
-                      {
-                        type: "filler"
-                      }
-                    ],
-                    flex: 1
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "box",
-                        layout: "horizontal",
-                        contents: [
-                          {
-                            type: "filler"
-                          },
-                          {
-                            type: "box",
-                            layout: "vertical",
-                            contents: [
-                              {
-                                type: "filler"
-                              }
-                            ],
-                            width: "2px",
-                            backgroundColor: "#6486E3"
-                          },
-                          {
-                            type: "filler"
-                          }
-                        ],
-                        flex: 1
-                      }
-                    ],
-                    width: "12px"
-                  },
-                  {
-                    type: "text",
-                    gravity: "center",
-                    flex: 4,
-                    size: "xs",
-                    color: "#8c8c8c",
-                    text: " "
-                  }
-                ],
-                spacing: "lg",
-                height: "64px"
-              },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "box",
-                    layout: "horizontal",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "20:34",
-                        gravity: "center",
-                        size: "sm"
-                      }
-                    ],
-                    flex: 1
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "filler"
-                      },
-                      {
-                        type: "box",
-                        layout: "vertical",
-                        contents: [
-                          {
-                            type: "filler"
-                          }
-                        ],
-                        cornerRadius: "30px",
-                        width: "12px",
-                        height: "12px",
-                        borderWidth: "2px",
-                        borderColor: "#6486E3"
-                      },
-                      {
-                        type: "filler"
-                      }
-                    ],
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "Ochanomizu",
-                    gravity: "center",
-                    flex: 4,
-                    size: "sm"
-                  }
-                ],
-                spacing: "lg",
-                cornerRadius: "30px"
-              },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    contents: [
-                      {
-                        type: "filler"
-                      }
-                    ],
-                    flex: 1
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "box",
-                        layout: "horizontal",
-                        contents: [
-                          {
-                            type: "filler"
-                          },
-                          {
-                            type: "box",
-                            layout: "vertical",
-                            contents: [
-                              {
-                                type: "filler"
-                              }
-                            ],
-                            width: "2px",
-                            backgroundColor: "#6486E3"
-                          },
-                          {
-                            type: "filler"
-                          }
-                        ],
-                        flex: 1
-                      }
-                    ],
-                    width: "12px"
-                  },
-                  {
-                    type: "text",
-                    text: " ",
-                    gravity: "center",
-                    flex: 4,
-                    size: "xs",
-                    color: "#8c8c8c"
-                  }
-                ],
-                spacing: "lg",
-                height: "64px"
-              },
-              {
-                type: "box",
-                layout: "horizontal",
-                contents: [
-                  {
-                    type: "text",
-                    text: "20:40",
-                    gravity: "center",
-                    size: "sm"
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "filler"
-                      },
-                      {
-                        type: "box",
-                        layout: "vertical",
-                        contents: [
-                          {
-                            type: "filler"
-                          }
-                        ],
-                        cornerRadius: "30px",
-                        width: "12px",
-                        height: "12px",
-                        borderColor: "#6486E3",
-                        borderWidth: "2px"
-                      },
-                      {
-                        type: "filler"
-                      }
-                    ],
-                    flex: 0
-                  },
-                  {
-                    type: "text",
-                    text: "Shinjuku",
-                    gravity: "center",
-                    flex: 4,
-                    size: "sm"
-                  }
-                ],
-                spacing: "lg",
-                cornerRadius: "30px"
-              }
-            ]
+            contents: []
           },
           footer: {
             type: "box",
