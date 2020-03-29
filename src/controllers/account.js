@@ -93,6 +93,7 @@ function getBodyTimeline(url, token, replyToken) {
     messages: [
       {
         type: "bubble",
+        altText: "Timeline",
         size: "giga",
         header: {
           type: "box",
