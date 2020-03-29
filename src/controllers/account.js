@@ -114,7 +114,7 @@ function getBodyDailyHealthReport(url, token, replyToken) {
 }
 
 function getLineJounry() {
-  let data = {
+  data = {
     type: "box",
     layout: "horizontal",
     contents: [
@@ -181,7 +181,7 @@ function getLocationJounry(date, title, address) {
     contents: [
       {
         type: "text",
-        text: new Date(date).toLocaleString('th-TH'),
+        text: new Date(date).toLocaleString("th-TH"),
         size: "xxs",
         position: "relative",
         wrap: true
