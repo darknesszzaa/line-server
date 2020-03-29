@@ -157,7 +157,7 @@ function getBodySignIn(url, userId, replyToken) {
           type: 'bubble',
           hero: {
             type: 'image',
-            url: URL_LOGO,
+            url: 'https://yt3.ggpht.com/a/AGF-l7_zOh3DStGbUiDILMTVPPdvQ4XzACADFXvhNQ=s900-c-k-c0xffffffff-no-rj-mo',
             action: {
               type: 'uri',
               uri: url
