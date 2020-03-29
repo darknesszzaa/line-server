@@ -278,9 +278,9 @@ function getBodyTimeline(url, token, replyToken) {
               {
                 type: "button",
                 action: {
-                  type: "uri",
+                  type: "message",
                   label: "ดูแผนที่",
-                  uri: 'https://www.google.co.th/maps/@13.9999013,100.6140252,15z?hl=en'
+                  text: "แผนที่ - เร็วๆนี้ ไม่นานเกินรอ"
                 },
                 color: "#0367D3",
                 flex: 1,
