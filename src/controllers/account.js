@@ -195,7 +195,7 @@ function getBodySignIn(url, userId, replyToken) {
                 action: {
                   type: 'uri',
                   label: 'Sign In',
-                  uri: url + '/signin-line;token=' + userId
+                  uri: url + '/login-line;token=' + userId
                 }
               }
             ]
