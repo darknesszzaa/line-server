@@ -8,6 +8,8 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
+    console.log(req.body.events[0].message)
+
     switch (value) {
       case 'Daily Health Report':
         body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
@@ -54,6 +56,10 @@ function getBodyDailyHealthReport(url, token, replyToken) {
               type: "uri",
               label: "รายงานสุขภาพ",
               uri: url + "/health-report/" + token
+            },
+            {
+              type: "location",
+              label: "รายงานการเดินทาง",
             }
           ],
           thumbnailImageUrl: "https://c.pshere.com/photos/44/50/checking_checklist_daily_report_data_document_hand_health_healthcare-1001745.jpg!d",
