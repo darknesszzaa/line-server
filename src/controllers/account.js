@@ -315,7 +315,7 @@ function getBodyRiskReport(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "แบบประเมินความเสี่ยง (Risk)",
+              label: "ประเมินความเสี่ยง(Risk)",
               uri: url + "/risk-report/" + token
             }
           ],
@@ -341,12 +341,12 @@ function getBodyHistoryReport(url, token, id, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประวัติของตนเอง (Salf)",
+              label: "ตนเอง (Salf)",
               uri: url + "/history/" + token + '/' + id
             },
             {
               type: "message",
-              label: "ประวัติการเช็คอิน (Check-In)",
+              label: "เช็คอิน (Check-In)",
               text: "Timeline"
             }
           ],
@@ -372,17 +372,17 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประวัติของตนเอง (Salf)",
+              label: "ตนเอง (Salf)",
               uri: url + "/history/" + token + '/' + id
             },
             {
               type: "message",
-              label: "ประวัติการเช็คอิน (Check-In)",
+              label: "เช็คอิน (Check-In)",
               text: "Timeline"
             },
             {
               type: "uri",
-              label: "ประวัติของสมาชิกทีม (Team)",
+              label: "สมาชิกทีม (Team)",
               uri: url + "/history/teammember/" + token + '/' + id
             }
           ],
@@ -408,7 +408,7 @@ function getBodyNews(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ดูรายการประกาศ (Announcement)",
+              label: "ประกาศ (Announcement)",
               uri: url + "/news/" + token
             }
           ],
