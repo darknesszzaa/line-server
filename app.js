@@ -18,7 +18,12 @@ app.use(bodyParser.json());
 const directory = __dirname + '/src/views/signin.html';
 console.log(directory)
 app.get('/', function (req, res) {
-  res.sendFile(directory);
+  res.sendFile('/', { root: directory });
+});
+
+const directoryGoogle = __dirname + '/src/views/googlea5e8055fa0f2b521.html';
+app.get('/googlea5e8055fa0f2b521.html', function (req, res) {
+  res.sendFile('/', { root: directoryGoogle });
 });
 
 app.use(api, routes);
