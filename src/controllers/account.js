@@ -377,7 +377,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
             },
             {
               type: "message",
-              label: "ประวัติเช็คอิน (Check-In)",
+              label: "ประวัติเช็คอิน (Timeline)",
               text: "Timeline"
             },
             {
