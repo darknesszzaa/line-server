@@ -96,13 +96,13 @@ function getBodyDailyHealthReport(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "รายงานสุขภาพ",
+              label: "รายงานสุขภาพ (Health)",
               uri: url + "/health-report/" + token
             },
             {
               type: "location",
               title: "My Location",
-              label: "รายงานการเดินทาง",
+              label: "เช็คอิน (Check-In)",
             }
           ],
           thumbnailImageUrl: "https://c.pshere.com/photos/44/50/checking_checklist_daily_report_data_document_hand_health_healthcare-1001745.jpg!d",
@@ -315,7 +315,7 @@ function getBodyRiskReport(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "แบบประเมินความเสี่ยง",
+              label: "แบบประเมินความเสี่ยง (Risk)",
               uri: url + "/risk-report/" + token
             }
           ],
@@ -341,12 +341,12 @@ function getBodyHistoryReport(url, token, id, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประวัติของตนเอง",
+              label: "ประวัติของตนเอง (Salf)",
               uri: url + "/history/" + token + '/' + id
             },
             {
               type: "message",
-              label: "ประวัติการเดินทาง",
+              label: "ประวัติการเช็คอิน (Check-In)",
               text: "Timeline"
             }
           ],
@@ -372,17 +372,17 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประวัติของตนเอง",
+              label: "ประวัติของตนเอง (Salf)",
               uri: url + "/history/" + token + '/' + id
             },
             {
               type: "message",
-              label: "ประวัติการเดินทาง",
+              label: "ประวัติการเช็คอิน (Check-In)",
               text: "Timeline"
             },
             {
               type: "uri",
-              label: "ประวัติของสมาชิกทีม",
+              label: "ประวัติของสมาชิกทีม (Team)",
               uri: url + "/history/teammember/" + token + '/' + id
             }
           ],
@@ -408,7 +408,7 @@ function getBodyNews(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ดูรายการประกาศ",
+              label: "ดูรายการประกาศ (Announcement)",
               uri: url + "/news/" + token
             }
           ],
