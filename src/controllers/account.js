@@ -23,7 +23,7 @@ const account = async (req, res) => {
     switch (value.toUpperCase()) {
       case 'HELP':
         dataHelp = 'Keyword List \n\n Daily Health Report\n Risk Report\n History\n Notice\n Timeline'
-      line.sendTextReplyToLine(replyToken, dataHelp);
+        line.sendTextReplyToLine(replyToken, dataHelp);
         break;
       case 'DAILY HEALTH REPORT':
         body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
@@ -73,6 +73,9 @@ const account = async (req, res) => {
             locationJounry = getLocationJounry(timeline.date, timeline.title, timeline.address);
             body.messages[0].contents.body.contents.push(locationJounry);
           }
+        } else {
+          line.sendTextReplyToLine(replyToken, 'คุณยังไม่มีประวัติการเช็คอิน');
+          break;
         }
         line.sendReplyBodyToLine(replyToken, body);
         break;
@@ -349,7 +352,7 @@ function getBodyHistoryReport(url, token, id, replyToken) {
             },
             {
               type: "message",
-              label: "เช็คอิน (Timeline)",
+              label: "ไทม์ไลน์ (Timeline)",
               text: "Timeline"
             }
           ],
@@ -380,7 +383,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
             },
             {
               type: "message",
-              label: "เช็คอิน (Timeline)",
+              label: "ไทม์ไลน์ (Timeline)",
               text: "Timeline"
             },
             {
