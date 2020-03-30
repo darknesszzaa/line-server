@@ -315,7 +315,7 @@ function getBodyRiskReport(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประเมินความเสี่ยง(Risk)",
+              label: "ประเมินความเสี่ยง (Risk)",
               uri: url + "/risk-report/" + token
             }
           ],
@@ -408,7 +408,7 @@ function getBodyNews(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประกาศ (Announcement)",
+              label: "ประกาศ (Notice)",
               uri: url + "/news/" + token
             }
           ],
