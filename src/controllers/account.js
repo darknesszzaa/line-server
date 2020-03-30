@@ -256,7 +256,7 @@ function getBodyTimeline(url, token, replyToken) {
                 contents: [
                   {
                     type: "text",
-                    text: "ประวัติการเดินทางย้อนหลัง",
+                    text: "ประวัติการเดินทางย้อนหลัง (Timeline)",
                     color: "#ffffff",
                     size: "lg",
                     flex: 1,
@@ -285,7 +285,7 @@ function getBodyTimeline(url, token, replyToken) {
                 type: "button",
                 action: {
                   type: "message",
-                  label: "ดูแผนที่",
+                  label: "ดูแผนที่ (Map)",
                   text: "แผนที่ - เร็วๆนี้ ไม่นานเกินรอ"
                 },
                 color: "#0367D3",
