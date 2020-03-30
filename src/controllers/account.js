@@ -315,7 +315,7 @@ function getBodyRiskReport(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ประเมินความเสี่ยง (Risk)",
+              label: "ประเมินความเสี่ยง(Risk)",
               uri: url + "/risk-report/" + token
             }
           ],
@@ -377,7 +377,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
             },
             {
               type: "message",
-              label: "เช็คอิน (Check-In)",
+              label: "ประวัติเช็คอิน (Check-In)",
               text: "Timeline"
             },
             {
