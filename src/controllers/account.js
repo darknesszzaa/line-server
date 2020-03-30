@@ -8,6 +8,8 @@ const account = async (req, res) => {
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
+    console.log(req.body.events[0])
+
     if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
       await axios.post(url + '/timeline', {
         userId: req.body.events[0].source.userId, address: req.body.events[0].message.address,
@@ -16,7 +18,6 @@ const account = async (req, res) => {
         headers: { Authorization: "Bearer " + userData.data.token }
       });
       line.sendTextReplyToLine(replyToken, 'บันทึกข้อมูลเรียบร้อยแล้ว');
-      res.status(200).send('success');
     }
 
 
@@ -42,7 +43,7 @@ const account = async (req, res) => {
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'Timeline':
-        const timelineList = await axios.get(url + '/timeline', {
+        const timelineList = await axios.get(url + '/timeline/user', {
           headers: { Authorization: "Bearer " + userData.data.token }
         });
         body = getBodyTimeline(url, userData.data.token, replyToken);
