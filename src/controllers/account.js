@@ -259,7 +259,7 @@ function getBodyTimeline(url, token, replyToken) {
                 contents: [
                   {
                     type: "text",
-                    text: "ประวัติการเดินทางย้อนหลัง (Timeline)",
+                    text: "ประวัติการ Check-In",
                     color: "#ffffff",
                     size: "lg",
                     flex: 1,
