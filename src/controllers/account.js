@@ -20,17 +20,20 @@ const account = async (req, res) => {
       line.sendTextReplyToLine(replyToken, 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 
-
-    switch (value) {
-      case 'Daily Health Report':
+    switch (value.toUpperCase()) {
+      case 'HELP':
+        dataHelp = 'Keyword List \n Daily Health Report\n Risk Report\n History\n Notice\n Timeline'
+      line.sendTextReplyToLine(replyToken, dataHelp);
+        break;
+      case 'DAILY HEALTH REPORT':
         body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
-      case 'Risk Report':
+      case 'RISK REPORT':
         body = getBodyRiskReport(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
-      case 'History':
+      case 'HISTORY':
         if (userData.data.isLeader) {
           body = getBodyHistoryLeaderReport(url, userData.data.token, userData.data.id, replyToken);
         } else {
@@ -38,11 +41,11 @@ const account = async (req, res) => {
         }
         line.sendReplyBodyToLine(replyToken, body);
         break;
-      case 'Notice':
+      case 'NOTICE':
         body = getBodyNews(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
-      case 'Timeline':
+      case 'TIMELINE':
         const timelineList = await axios.get(url + '/timeline/user', {
           headers: { Authorization: "Bearer " + userData.data.token }
         });
