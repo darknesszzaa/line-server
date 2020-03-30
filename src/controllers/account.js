@@ -352,7 +352,7 @@ function getBodyHistoryReport(url, token, id, replyToken) {
             },
             {
               type: "message",
-              label: "ไทม์ไลน์ (Timeline)",
+              label: "เช็คอิน (Check-ins)",
               text: "Timeline"
             }
           ],
@@ -383,7 +383,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
             },
             {
               type: "message",
-              label: "ไทม์ไลน์ (Timeline)",
+              label: "เช็คอิน (Check-ins)",
               text: "Timeline"
             },
             {
