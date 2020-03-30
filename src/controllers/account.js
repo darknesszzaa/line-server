@@ -22,7 +22,7 @@ const account = async (req, res) => {
 
     switch (value.toUpperCase()) {
       case 'HELP':
-        dataHelp = 'Keyword List \n Daily Health Report\n Risk Report\n History\n Notice\n Timeline'
+        dataHelp = 'Keyword List \n\n Daily Health Report\n Risk Report\n History\n Notice\n Timeline'
       line.sendTextReplyToLine(replyToken, dataHelp);
         break;
       case 'DAILY HEALTH REPORT':
