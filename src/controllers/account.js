@@ -347,7 +347,7 @@ function getBodyHistoryReport(url, token, id, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ตนเอง (Salf)",
+              label: "ตนเอง (Self)",
               uri: url + "/history/" + token + '/' + id
             },
             {
@@ -378,7 +378,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "ตนเอง (Salf)",
+              label: "ตนเอง (Self)",
               uri: url + "/history/" + token + '/' + id
             },
             {
