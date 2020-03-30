@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
 });
 
 const directoryGoogle = __dirname + '/src/views/googlea5e8055fa0f2b521.html';
-app.get('/googlea5e8055fa0f2b521', function (req, res) {
+app.get('/googlea5e8055fa0f2b521.html', function (req, res) {
   res.sendFile(directoryGoogle);
 });
 
