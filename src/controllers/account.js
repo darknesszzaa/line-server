@@ -60,6 +60,9 @@ const account = async (req, res) => {
           if (!timelineList.data[0].title) {
             timelineList.data[0].title = '';
           }
+          if (timelineList.data.length > 8) {
+            timelineList.data = timelineList.data.slice(0, 8);
+          }
           locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
           body.messages[0].contents.body.contents.push(locationJounry);
 
