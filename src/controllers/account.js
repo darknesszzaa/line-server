@@ -46,6 +46,11 @@ const account = async (req, res) => {
         body = getBodyNews(url, userData.data.token, replyToken);
         line.sendReplyBodyToLine(replyToken, body);
         break;
+      case 'COVID-NEWS':
+        await axios.get(url + '/news-today/' + replyToken, {
+          headers: { Authorization: "Bearer " + userData.data.token }
+        });
+        break;
       case 'TIMELINE':
         const timelineList = await axios.get(url + '/timeline/user', {
           headers: { Authorization: "Bearer " + userData.data.token }
@@ -421,6 +426,11 @@ function getBodyNews(url, token, replyToken) {
               type: "uri",
               label: "ประกาศ (Notice)",
               uri: url + "/news/" + token
+            },
+            {
+              type: "message",
+              label: "รายงานสถานการณ์ Covid-19",
+              text: "Covid-News"
             }
           ],
           thumbnailImageUrl: "https://cdn3.vectorstock.com/i/1000x1000/26/32/megaphone-announcement-vector-272632.jpg",
