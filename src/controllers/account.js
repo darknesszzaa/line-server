@@ -429,7 +429,7 @@ function getBodyNews(url, token, replyToken) {
             },
             {
               type: "message",
-              label: "รายงานสถานการณ์ Covid-19",
+              label: "รายงานสถานการณ์",
               text: "Covid-News"
             }
           ],
