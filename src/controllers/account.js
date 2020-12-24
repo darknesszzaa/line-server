@@ -88,6 +88,7 @@ const account = async (req, res) => {
     }
     res.status(200).send('success');
   } catch (e) {
+    console.log(e)
     body = getBodySignIn(url, req.body.events[0].source.userId, replyToken);
     line.sendReplyBodyToLine(replyToken, body);
     res.status(200).send('success');
