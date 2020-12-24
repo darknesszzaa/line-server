@@ -47,7 +47,7 @@ const account = async (req, res) => {
         line.sendReplyBodyToLine(replyToken, body);
         break;
       case 'COVID-NEWS':
-        await axios.get(url + '/news-today/' + replyToken, {
+        await axios.get(url + '/news/news-today/' + replyToken, {
           headers: { Authorization: "Bearer " + userData.data.token }
         });
         break;
