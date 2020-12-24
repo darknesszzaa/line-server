@@ -13,11 +13,12 @@ const account = async (req, res) => {
     if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
       await axios.post(url + '/timeline', {
         userId: req.body.events[0].source.userId, address: req.body.events[0].message.address,
-        title: req.body.events[0].message.title, latitude: req.body.events[0].message.latitude, longitude: req.body.events[0].message.longitude
+        title: req.body.events[0].message.title, latitude: req.body.events[0].message.latitude, longitude: req.body.events[0].message.longitude,
+        replyToken: replyToken
       }, {
         headers: { Authorization: "Bearer " + userData.data.token }
       });
-      line.sendTextReplyToLine(replyToken, 'บันทึกข้อมูลเรียบร้อยแล้ว');
+      // line.sendTextReplyToLine(replyToken, 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 
     switch (value.toUpperCase()) {
