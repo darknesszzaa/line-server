@@ -459,7 +459,7 @@ function getBodyAway(url, token, replyToken) {
           actions: [
             {
               type: "uri",
-              label: "เตือนพื้นที่มีเคส",
+              label: "แจ้งเตือนพื้นที่มีเคส",
               uri: "https://liff.line.me/1653981898-q0jEx1on"
             },
             {
@@ -469,7 +469,7 @@ function getBodyAway(url, token, replyToken) {
             },
             {
               type: "uri",
-              label: "สถานรักษาพยาบาล",
+              label: "ค้นหาสถานรักษาพยาบาล",
               uri: "https://liff.line.me/1653981898-QwWOp3PN"
             }
           ],
