@@ -452,7 +452,7 @@ function getBodyAway(url, token, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        type: "carousel",
+        type: "flex",
         altText: "away",
         contents: [
           {
@@ -479,7 +479,7 @@ function getBodyAway(url, token, replyToken) {
                       contents: [
                         {
                           type: "text",
-                          text: "เตือน",
+                          text: "เตือนก่อนเข้าใกล้พื้นที่มีเคส",
                           size: "xl",
                           color: "#ffffff",
                           weight: "bold"
@@ -571,7 +571,7 @@ function getBodyAway(url, token, replyToken) {
                       contents: [
                         {
                           type: "text",
-                          text: "สถิติ",
+                          text: "สถิติผู้ติดเชื้อในประเทศไทย",
                           size: "xl",
                           color: "#ffffff",
                           weight: "bold"
@@ -663,7 +663,7 @@ function getBodyAway(url, token, replyToken) {
                       contents: [
                         {
                           type: "text",
-                          text: "ค้นหา",
+                          text: "ค้นหาสถานรักษาพยาบาล",
                           size: "xl",
                           color: "#ffffff",
                           weight: "bold"
