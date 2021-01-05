@@ -473,7 +473,7 @@ function getBodyAway(url, token, replyToken) {
               uri: "https://liff.line.me/1653981898-QwWOp3PN"
             }
           ],
-          thumbnailImageUrl: "https://media.nationthailand.com/images/news/2020/03/18/30384313/800_9c1e44b680c5eba.jpg?v=1584514465",
+          thumbnailImageUrl: "https://www.iphone-droid.net/wp-content/uploads/2021/01/away-covid-19-line-0.jpg",
           title: "Away Covid-19",
           text: "Away Covid-19"
         }
