@@ -2,7 +2,7 @@ const request = require('request')
 const { LINE_TOKEN, LINE_API } = require('../constants')
 
 function sendReplyBodyToLine(replyToken, body) {
-  console.log(body)
+  console.log(JSON.stringify(body))
   try {
     request({
       method: `POST`,
