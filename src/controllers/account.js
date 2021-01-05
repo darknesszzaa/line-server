@@ -452,282 +452,283 @@ function getBodyAway(url, token, replyToken) {
     replyToken: replyToken,
     messages: [
       {
-        "type": "carousel",
-        "contents": [
+        type: "carousel",
+        altText: "news",
+        contents: [
           {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
+            type: "bubble",
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
                 {
-                  "type": "image",
-                  "url": "https://png.pngtree.com/png-clipart/20200508/ourlarge/pngtree-virus-covid-19-quarantine-traffic-sign-png-image_2200677.jpg",
-                  "size": "full",
-                  "aspectMode": "cover",
-                  "aspectRatio": "2:3",
-                  "gravity": "top"
+                  type: "image",
+                  url: "https://png.pngtree.com/png-clipart/20200508/ourlarge/pngtree-virus-covid-19-quarantine-traffic-sign-png-image_2200677.jpg",
+                  size: "full",
+                  aspectMode: "cover",
+                  aspectRatio: "2:3",
+                  gravity: "top"
                 },
                 {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
                         {
-                          "type": "text",
-                          "text": "เตือนก่อนเข้าใกล้พื้นที่มีเคส",
-                          "size": "xl",
-                          "color": "#ffffff",
-                          "weight": "bold"
+                          type: "text",
+                          text: "เตือนก่อนเข้าใกล้พื้นที่มีเคส",
+                          size: "xl",
+                          color: "#ffffff",
+                          weight: "bold"
                         }
                       ]
                     },
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
                         {
-                          "type": "filler"
+                          type: "filler"
                         },
                         {
-                          "type": "box",
-                          "layout": "baseline",
-                          "contents": [
+                          type: "box",
+                          layout: "baseline",
+                          contents: [
                             {
-                              "type": "filler"
+                              type: "filler"
                             },
                             {
-                              "type": "text",
-                              "text": "Open",
-                              "color": "#ffffff",
-                              "flex": 0,
-                              "offsetTop": "-2px"
+                              type: "text",
+                              text: "Open",
+                              color: "#ffffff",
+                              flex: 0,
+                              offsetTop: "-2px"
                             },
                             {
-                              "type": "filler"
+                              type: "filler"
                             }
                           ],
-                          "spacing": "sm"
+                          spacing: "sm"
                         },
                         {
-                          "type": "filler"
+                          type: "filler"
                         }
                       ],
-                      "borderWidth": "1px",
-                      "cornerRadius": "4px",
-                      "spacing": "sm",
-                      "borderColor": "#ffffff",
-                      "margin": "xxl",
-                      "height": "40px",
-                      "action": {
-                        "type": "uri",
-                        "label": "action",
-                        "uri": "https://liff.line.me/1653981898-q0jEx1on"
+                      borderWidth: "1px",
+                      cornerRadius: "4px",
+                      spacing: "sm",
+                      borderColor: "#ffffff",
+                      margin: "xxl",
+                      height: "40px",
+                      action: {
+                        type: "uri",
+                        label: "action",
+                        uri: "https://liff.line.me/1653981898-q0jEx1on"
                       }
                     }
                   ],
-                  "position": "absolute",
-                  "offsetBottom": "0px",
-                  "offsetStart": "0px",
-                  "offsetEnd": "0px",
-                  "backgroundColor": "#000000aa",
-                  "paddingAll": "20px",
-                  "paddingTop": "18px"
+                  position: "absolute",
+                  offsetBottom: "0px",
+                  offsetStart: "0px",
+                  offsetEnd: "0px",
+                  backgroundColor: "#000000aa",
+                  paddingAll: "20px",
+                  paddingTop: "18px"
                 }
               ],
-              "paddingAll": "0px"
+              paddingAll: "0px"
             },
-            "action": {
-              "type": "uri",
-              "label": "action",
-              "uri": "https://liff.line.me/1653981898-q0jEx1on"
+            action: {
+              type: "uri",
+              label: "action",
+              uri: "https://liff.line.me/1653981898-q0jEx1on"
             }
           },
           {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
+            type: "bubble",
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
                 {
-                  "type": "image",
-                  "url": "https://media.nationthailand.com/images/news/2020/03/18/30384313/800_9c1e44b680c5eba.jpg?v=1584514465",
-                  "size": "full",
-                  "aspectMode": "cover",
-                  "aspectRatio": "2:3",
-                  "gravity": "center"
+                  type: "image",
+                  url: "https://media.nationthailand.com/images/news/2020/03/18/30384313/800_9c1e44b680c5eba.jpg?v=1584514465",
+                  size: "full",
+                  aspectMode: "cover",
+                  aspectRatio: "2:3",
+                  gravity: "center"
                 },
                 {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
                         {
-                          "type": "text",
-                          "text": "สถิติผู้ติดเชื้อในประเทศไทย",
-                          "size": "xl",
-                          "color": "#ffffff",
-                          "weight": "bold"
+                          type: "text",
+                          text: "สถิติผู้ติดเชื้อในประเทศไทย",
+                          size: "xl",
+                          color: "#ffffff",
+                          weight: "bold"
                         }
                       ]
                     },
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
                         {
-                          "type": "filler"
+                          type: "filler"
                         },
                         {
-                          "type": "box",
-                          "layout": "baseline",
-                          "contents": [
+                          type: "box",
+                          layout: "baseline",
+                          contents: [
                             {
-                              "type": "filler"
+                              type: "filler"
                             },
                             {
-                              "type": "text",
-                              "text": "Open",
-                              "color": "#ffffff",
-                              "flex": 0,
-                              "offsetTop": "-2px"
+                              type: "text",
+                              text: "Open",
+                              color: "#ffffff",
+                              flex: 0,
+                              offsetTop: "-2px"
                             },
                             {
-                              "type": "filler"
+                              type: "filler"
                             }
                           ],
-                          "spacing": "sm"
+                          spacing: "sm"
                         },
                         {
-                          "type": "filler"
+                          type: "filler"
                         }
                       ],
-                      "borderWidth": "1px",
-                      "cornerRadius": "4px",
-                      "spacing": "sm",
-                      "borderColor": "#ffffff",
-                      "margin": "xxl",
-                      "height": "40px",
-                      "action": {
-                        "type": "uri",
-                        "label": "action",
-                        "uri": "https://liff.line.me/1653981898-EK590Od2"
+                      borderWidth: "1px",
+                      cornerRadius: "4px",
+                      spacing: "sm",
+                      borderColor: "#ffffff",
+                      margin: "xxl",
+                      height: "40px",
+                      action: {
+                        type: "uri",
+                        label: "action",
+                        uri: "https://liff.line.me/1653981898-EK590Od2"
                       }
                     }
                   ],
-                  "position": "absolute",
-                  "offsetBottom": "0px",
-                  "offsetStart": "0px",
-                  "offsetEnd": "0px",
-                  "backgroundColor": "#000000aa",
-                  "paddingAll": "20px",
-                  "paddingTop": "18px"
+                  position: "absolute",
+                  offsetBottom: "0px",
+                  offsetStart: "0px",
+                  offsetEnd: "0px",
+                  backgroundColor: "#000000aa",
+                  paddingAll: "20px",
+                  paddingTop: "18px"
                 }
               ],
-              "paddingAll": "0px"
+              paddingAll: "0px"
             },
-            "action": {
-              "type": "uri",
-              "label": "action",
-              "uri": "https://liff.line.me/1653981898-EK590Od2"
+            action: {
+              type: "uri",
+              label: "action",
+              uri: "https://liff.line.me/1653981898-EK590Od2"
             }
           },
           {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
+            type: "bubble",
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
                 {
-                  "type": "image",
-                  "url": "https://i.pinimg.com/736x/e6/6e/7d/e66e7d6b1ac1b95cbb6508d5fa7aa0de.jpg",
-                  "size": "full",
-                  "aspectMode": "cover",
-                  "aspectRatio": "2:3",
-                  "gravity": "top"
+                  type: "image",
+                  url: "https://i.pinimg.com/736x/e6/6e/7d/e66e7d6b1ac1b95cbb6508d5fa7aa0de.jpg",
+                  size: "full",
+                  aspectMode: "cover",
+                  aspectRatio: "2:3",
+                  gravity: "top"
                 },
                 {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
                         {
-                          "type": "text",
-                          "text": "ค้นหาสถานรักษาพยาบาล",
-                          "size": "xl",
-                          "color": "#ffffff",
-                          "weight": "bold"
+                          type: "text",
+                          text: "ค้นหาสถานรักษาพยาบาล",
+                          size: "xl",
+                          color: "#ffffff",
+                          weight: "bold"
                         }
                       ]
                     },
                     {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
                         {
-                          "type": "filler"
+                          type: "filler"
                         },
                         {
-                          "type": "box",
-                          "layout": "baseline",
-                          "contents": [
+                          type: "box",
+                          layout: "baseline",
+                          contents: [
                             {
-                              "type": "filler"
+                              type: "filler"
                             },
                             {
-                              "type": "text",
-                              "text": "Open",
-                              "color": "#ffffff",
-                              "flex": 0,
-                              "offsetTop": "-2px"
+                              type: "text",
+                              text: "Open",
+                              color: "#ffffff",
+                              flex: 0,
+                              offsetTop: "-2px"
                             },
                             {
-                              "type": "filler"
+                              type: "filler"
                             }
                           ],
-                          "spacing": "sm"
+                          spacing: "sm"
                         },
                         {
-                          "type": "filler"
+                          type: "filler"
                         }
                       ],
-                      "borderWidth": "1px",
-                      "cornerRadius": "4px",
-                      "spacing": "sm",
-                      "borderColor": "#ffffff",
-                      "margin": "xxl",
-                      "height": "40px",
-                      "action": {
-                        "type": "uri",
-                        "label": "action",
-                        "uri": "https://liff.line.me/1653981898-QwWOp3PN"
+                      borderWidth: "1px",
+                      cornerRadius: "4px",
+                      spacing: "sm",
+                      borderColor: "#ffffff",
+                      margin: "xxl",
+                      height: "40px",
+                      action: {
+                        type: "uri",
+                        label: "action",
+                        uri: "https://liff.line.me/1653981898-QwWOp3PN"
                       }
                     }
                   ],
-                  "position": "absolute",
-                  "offsetBottom": "0px",
-                  "offsetStart": "0px",
-                  "offsetEnd": "0px",
-                  "backgroundColor": "#000000aa",
-                  "paddingAll": "20px",
-                  "paddingTop": "18px"
+                  position: "absolute",
+                  offsetBottom: "0px",
+                  offsetStart: "0px",
+                  offsetEnd: "0px",
+                  backgroundColor: "#000000aa",
+                  paddingAll: "20px",
+                  paddingTop: "18px"
                 }
               ],
-              "paddingAll": "0px"
+              paddingAll: "0px"
             },
-            "action": {
-              "type": "uri",
-              "label": "action",
-              "uri": "https://liff.line.me/1653981898-QwWOp3PN"
+            action: {
+              type: "uri",
+              label: "action",
+              uri: "https://liff.line.me/1653981898-QwWOp3PN"
             }
           }
         ]
