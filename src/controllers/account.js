@@ -464,7 +464,7 @@ function getBodyAway(url, token, replyToken) {
             },
             {
               type: "uri",
-              label: "สถิติผู้ติดเชื้อ",
+              label: "สถิติผู้ติดเชื้อในไทย",
               uri: "https://liff.line.me/1653981898-EK590Od2"
             },
             {
@@ -474,7 +474,8 @@ function getBodyAway(url, token, replyToken) {
             }
           ],
           thumbnailImageUrl: "https://media.nationthailand.com/images/news/2020/03/18/30384313/800_9c1e44b680c5eba.jpg?v=1584514465",
-          title: "Away Covid-19"
+          title: "Away Covid-19",
+          text: "Away Covid-19"
         }
       }
     ]
