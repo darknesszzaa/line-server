@@ -453,7 +453,7 @@ function getBodyAway(url, token, replyToken) {
     messages: [
       {
         type: "carousel",
-        altText: "news",
+        altText: "away",
         contents: [
           {
             type: "bubble",
