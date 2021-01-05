@@ -460,17 +460,17 @@ function getBodyAway(url, token, replyToken) {
             {
               type: "uri",
               label: "แจ้งเตือนพื้นที่มีเคส",
-              uri: "https://liff.line.me/1653981898-q0jEx1on"
+              uri: "https://mapedia-th.github.io/away-covid/index.html"
             },
             {
               type: "uri",
               label: "สถิติผู้ติดเชื้อในไทย",
-              uri: "https://liff.line.me/1653981898-EK590Od2"
+              uri: "https://mapedia-th.github.io/away-covid/map_dashboard.html"
             },
             {
               type: "uri",
               label: "ค้นหาสถานรักษาพยาบาล",
-              uri: "https://liff.line.me/1653981898-QwWOp3PN"
+              uri: "https://mapedia-th.github.io/away-covid/route.html"
             }
           ],
           thumbnailImageUrl: "https://media.nationthailand.com/images/news/2020/03/18/30384313/800_9c1e44b680c5eba.jpg?v=1584514465",
