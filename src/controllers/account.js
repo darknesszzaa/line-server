@@ -7,14 +7,15 @@ const url = URL_API;
 const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
+    let userId = req.body.events[0].source.userId;
     const value = req.body.events[0].message.text || 'no text'
-    const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
+    const userData = await axios.get(url + '/authen/verify-line-login/' + userId);
 
     console.log(req.body.events[0])
 
     if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
       await axios.post(url + '/profile/line-pickup-location', {
-        userId: req.body.events[0].source.userId,
+        userId: userId,
         latitude: req.body.events[0].message.latitude,
         longitude: req.body.events[0].message.longitude,
         replyToken: replyToken
@@ -28,7 +29,7 @@ const account = async (req, res) => {
 
     if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
       await axios.post(url + '/timeline', {
-        userId: req.body.events[0].source.userId,
+        userId: userId,
         address: req.body.events[0].message.address,
         title: req.body.events[0].message.title,
         latitude: req.body.events[0].message.latitude,
