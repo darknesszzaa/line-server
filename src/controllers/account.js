@@ -90,7 +90,7 @@ const account = async (req, res) => {
           }
         });
         break;
-      case 'Reset-Password':
+      case 'RESET-PASSWORD':
         await axios.get(url + '/profile/line-reset-password/' + userId + '/' + replyToken, {
           headers: {
             Authorization: "Bearer " + userData.data.token
