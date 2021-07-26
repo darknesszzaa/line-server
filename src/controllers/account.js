@@ -7,7 +7,6 @@ const url = URL_API;
 const account = async (req, res) => {
   const replyToken = req.body.events[0].replyToken || 'no replyToken';
   try {
-    const userId = req.body.events[0].source.userId
     const value = req.body.events[0].message.text || 'no text'
     const userData = await axios.get(url + '/authen/verify-line-login/' + req.body.events[0].source.userId);
 
@@ -29,7 +28,7 @@ const account = async (req, res) => {
 
     if (req.body.events[0].message.type && req.body.events[0].message.type === 'location') {
       await axios.post(url + '/timeline', {
-        userId: userId,
+        userId: req.body.events[0].source.userId,
         address: req.body.events[0].message.address,
         title: req.body.events[0].message.title,
         latitude: req.body.events[0].message.latitude,
