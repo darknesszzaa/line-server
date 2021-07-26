@@ -210,7 +210,7 @@ function getBodyProfile(url, token, replyToken) {
           },
           {
             type: "message",
-            label: "รีเซ็ตรหัสผ่าน (Reset Password)",
+            label: "รีเซ็ตรหัสผ่าน (Re-Password)",
             text: "Reset-Password"
           }, {
             type: "message",
