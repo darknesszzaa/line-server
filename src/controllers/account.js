@@ -209,12 +209,12 @@ function getBodyProfile(url, token, replyToken) {
           },
           {
             type: "location",
-            title: "ตั้งค่าจุดรับส่ง (Pick-Up)",
+            title: "ตั้งค่าจุดรับส่ง",
             label: "Set-PickUp",
           },
           {
             type: "text",
-            label: "รีเซ็ตรหัสผ่าน (Reset Password)",
+            label: "รีเซ็ตรหัสผ่าน",
             text: "Reset-Password"
           }, {
             type: "text",
