@@ -204,8 +204,8 @@ function getBodyProfile(url, token, replyToken) {
           },
           {
             type: "location",
-            title: "ตั้งค่าจุดรับส่ง",
-            label: "Set-PickUp",
+            title: "ตั้งค่าจุดรถรับส่ง",
+            label: "ตั้งค่าจุดรถรับส่ง",
           },
           {
             type: "message",
@@ -469,7 +469,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
           },
           {
             type: "message",
-            label: "จุดรับส่ง",
+            label: "จุดรถรับส่ง",
             text: "Pick-Up"
           },
         ],
