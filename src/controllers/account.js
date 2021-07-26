@@ -199,7 +199,7 @@ function getBodyProfile(url, token, replyToken) {
         type: "buttons",
         actions: [{
             type: "text",
-            label: "โปรไฟล์ (Profile)",
+            label: "โปรไฟล์",
             text: "My-Profile"
           },
           {
@@ -213,7 +213,7 @@ function getBodyProfile(url, token, replyToken) {
             text: "Reset-Password"
           }, {
             type: "text",
-            label: "ออกจากระบบ (Signout)",
+            label: "ออกจากระบบ",
             text: "Signout"
           },
         ],
@@ -469,7 +469,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
           },
           {
             type: "text",
-            label: "จุดรับส่ง (Pick-Up)",
+            label: "จุดรับส่ง",
             text: "Pick-Up"
           },
         ],
