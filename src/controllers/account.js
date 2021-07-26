@@ -200,21 +200,21 @@ function getBodyProfile(url, token, replyToken) {
         type: "buttons",
         actions: [{
             type: "message",
-            label: "โปรไฟล์",
+            label: "โปรไฟล์ (Profile)",
             text: "My-Profile"
           },
           {
             type: "location",
-            title: "ตั้งค่าจุดรถรับส่ง",
+            title: "ตั้งค่าจุดรถรับส่ง (Pick Up)",
             label: "ตั้งค่าจุดรถรับส่ง",
           },
           {
             type: "message",
-            label: "รีเซ็ตรหัสผ่าน",
+            label: "รีเซ็ตรหัสผ่าน (Reset Password)",
             text: "Reset-Password"
           }, {
             type: "message",
-            label: "ออกจากระบบ",
+            label: "ออกจากระบบ (Signout)",
             text: "Signout"
           },
         ],
