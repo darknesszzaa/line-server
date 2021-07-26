@@ -198,7 +198,7 @@ function getBodyProfile(url, token, replyToken) {
       template: {
         type: "buttons",
         actions: [{
-            type: "text",
+            type: "message",
             label: "โปรไฟล์",
             text: "My-Profile"
           },
@@ -208,11 +208,11 @@ function getBodyProfile(url, token, replyToken) {
             label: "Set-PickUp",
           },
           {
-            type: "text",
+            type: "message",
             label: "รีเซ็ตรหัสผ่าน",
             text: "Reset-Password"
           }, {
-            type: "text",
+            type: "message",
             label: "ออกจากระบบ",
             text: "Signout"
           },
@@ -468,7 +468,7 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
             uri: url + "/history/teammember/" + token + '/' + id
           },
           {
-            type: "text",
+            type: "message",
             label: "จุดรับส่ง",
             text: "Pick-Up"
           },
