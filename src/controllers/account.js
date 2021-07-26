@@ -203,11 +203,6 @@ function getBodyProfile(url, token, replyToken) {
             text: "My-Profile"
           },
           {
-            type: "text",
-            label: "จุดรับส่ง (Pick-Up)",
-            text: "Pick-Up"
-          },
-          {
             type: "location",
             title: "ตั้งค่าจุดรับส่ง",
             label: "Set-PickUp",
@@ -471,7 +466,12 @@ function getBodyHistoryLeaderReport(url, token, id, replyToken) {
             type: "uri",
             label: "สมาชิกทีม (Team)",
             uri: url + "/history/teammember/" + token + '/' + id
-          }
+          },
+          {
+            type: "text",
+            label: "จุดรับส่ง (Pick-Up)",
+            text: "Pick-Up"
+          },
         ],
         thumbnailImageUrl: "https://www.homeworkrecords.net/wp-content/uploads/2019/08/Information.jpg",
         title: "ประวัติการรายงาน",
