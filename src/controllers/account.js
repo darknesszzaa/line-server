@@ -151,6 +151,15 @@ const account = async (req, res) => {
         line.sendReplyBodyToLine(replyToken, body);
         break;
       default:
+        let data = {
+          message: value,
+          senderId: replyToken
+        }
+        await axios.post(url + '/question', data, {
+          headers: {
+            Authorization: "Bearer " + userData.data.token
+          }
+        });
         break;
     }
     res.status(200).send('success');
