@@ -43,126 +43,129 @@ const account = async (req, res) => {
       // line.sendTextReplyToLine(replyToken, 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 
-    switch (value.toUpperCase()) {
-      case 'HELP':
-        dataHelp = 'Keyword List \n\n Daily Health Report\n Risk Report\n History\n Notice\n Timeline'
-        line.sendTextReplyToLine(replyToken, dataHelp);
-        break;
-      case 'DAILY HEALTH REPORT':
-        body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      case 'PROFILE':
-        body = getBodyProfile(url, userData.data.token, replyToken);
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      case 'RISK REPORT':
-        body = getBodyRiskReport(url, userData.data.token, replyToken);
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      case 'HISTORY':
-        if (userData.data.isLeader) {
-          body = getBodyHistoryLeaderReport(url, userData.data.token, userData.data.id, replyToken);
-        } else {
-          body = getBodyHistoryReport(url, userData.data.token, userData.data.id, replyToken);
-        }
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      case 'NOTICE':
-        body = getBodyNews(url, userData.data.token, replyToken);
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      case 'AWAY':
-        body = getBodyAway(url, userData.data.token, replyToken);
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      case 'MY-PROFILE':
-        await axios.get(url + '/profile/line-profile/' + userId + '/' + replyToken, {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
-          }
-        });
-        break;
-      case 'PICK-UP':
-        await axios.get(url + '/profile/line-pickup-location/' + userId + '/' + replyToken, {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
-          }
-        });
-        break;
-      case 'RESET-PASSWORD':
-        await axios.get(url + '/profile/line-reset-password/' + userId + '/' + replyToken, {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
-          }
-        });
-        break;
-      case 'SIGNOUT':
-        await axios.get(url + '/profile/line-signout/' + userId + '/' + replyToken, {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
-          }
-        });
-        break;
-      case 'COVID-NEWS':
-        await axios.get(url + '/news/news-today/' + replyToken, {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
-          }
-        });
-        break;
-      case 'TIMELINE':
-        const timelineList = await axios.get(url + '/timeline/user', {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
-          }
-        });
-        body = getBodyTimeline(url, userData.data.token, replyToken);
-        if (timelineList.data.length === 1) {
-          if (!timelineList.data[0].title) {
-            timelineList.data[0].title = '';
-          }
-          locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
-          body.messages[0].contents.body.contents.push(locationJounry);
-        } else if (timelineList.data.length > 1) {
-          if (!timelineList.data[0].title) {
-            timelineList.data[0].title = '';
-          }
-          if (timelineList.data.length > 8) {
-            timelineList.data = timelineList.data.slice(0, 8);
-          }
-          locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
-          body.messages[0].contents.body.contents.push(locationJounry);
+    if (req.body.events[0].message.type && req.body.events[0].message.type === 'text') {
 
-          for (let index = 1; index < timelineList.data.length; index++) {
-            const timeline = timelineList.data[index];
-            lineJounry = getLineJounry();
-            body.messages[0].contents.body.contents.push(lineJounry);
-            if (!timeline.title) {
-              timeline.title = '';
-            }
-            locationJounry = getLocationJounry(timeline.date, timeline.title, timeline.address);
-            body.messages[0].contents.body.contents.push(locationJounry);
-          }
-        } else {
-          line.sendTextReplyToLine(replyToken, 'คุณยังไม่มีประวัติการเช็คอิน');
+      switch (value.toUpperCase()) {
+        case 'HELP':
+          dataHelp = 'Keyword List \n\n Daily Health Report\n Risk Report\n History\n Notice\n Timeline'
+          line.sendTextReplyToLine(replyToken, dataHelp);
           break;
-        }
-        line.sendReplyBodyToLine(replyToken, body);
-        break;
-      default:
-        let data = {
-          message: value,
-          senderId: replyToken
-        }
-        await axios.post(url + '/question', data, {
-          headers: {
-            Authorization: "Bearer " + userData.data.token
+        case 'DAILY HEALTH REPORT':
+          body = getBodyDailyHealthReport(url, userData.data.token, replyToken);
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        case 'PROFILE':
+          body = getBodyProfile(url, userData.data.token, replyToken);
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        case 'RISK REPORT':
+          body = getBodyRiskReport(url, userData.data.token, replyToken);
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        case 'HISTORY':
+          if (userData.data.isLeader) {
+            body = getBodyHistoryLeaderReport(url, userData.data.token, userData.data.id, replyToken);
+          } else {
+            body = getBodyHistoryReport(url, userData.data.token, userData.data.id, replyToken);
           }
-        });
-        break;
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        case 'NOTICE':
+          body = getBodyNews(url, userData.data.token, replyToken);
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        case 'AWAY':
+          body = getBodyAway(url, userData.data.token, replyToken);
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        case 'MY-PROFILE':
+          await axios.get(url + '/profile/line-profile/' + userId + '/' + replyToken, {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          break;
+        case 'PICK-UP':
+          await axios.get(url + '/profile/line-pickup-location/' + userId + '/' + replyToken, {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          break;
+        case 'RESET-PASSWORD':
+          await axios.get(url + '/profile/line-reset-password/' + userId + '/' + replyToken, {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          break;
+        case 'SIGNOUT':
+          await axios.get(url + '/profile/line-signout/' + userId + '/' + replyToken, {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          break;
+        case 'COVID-NEWS':
+          await axios.get(url + '/news/news-today/' + replyToken, {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          break;
+        case 'TIMELINE':
+          const timelineList = await axios.get(url + '/timeline/user', {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          body = getBodyTimeline(url, userData.data.token, replyToken);
+          if (timelineList.data.length === 1) {
+            if (!timelineList.data[0].title) {
+              timelineList.data[0].title = '';
+            }
+            locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
+            body.messages[0].contents.body.contents.push(locationJounry);
+          } else if (timelineList.data.length > 1) {
+            if (!timelineList.data[0].title) {
+              timelineList.data[0].title = '';
+            }
+            if (timelineList.data.length > 8) {
+              timelineList.data = timelineList.data.slice(0, 8);
+            }
+            locationJounry = getLocationJounry(timelineList.data[0].date, timelineList.data[0].title, timelineList.data[0].address);
+            body.messages[0].contents.body.contents.push(locationJounry);
+
+            for (let index = 1; index < timelineList.data.length; index++) {
+              const timeline = timelineList.data[index];
+              lineJounry = getLineJounry();
+              body.messages[0].contents.body.contents.push(lineJounry);
+              if (!timeline.title) {
+                timeline.title = '';
+              }
+              locationJounry = getLocationJounry(timeline.date, timeline.title, timeline.address);
+              body.messages[0].contents.body.contents.push(locationJounry);
+            }
+          } else {
+            line.sendTextReplyToLine(replyToken, 'คุณยังไม่มีประวัติการเช็คอิน');
+            break;
+          }
+          line.sendReplyBodyToLine(replyToken, body);
+          break;
+        default:
+          let data = {
+            message: value,
+            senderId: replyToken
+          }
+          await axios.post(url + '/question', data, {
+            headers: {
+              Authorization: "Bearer " + userData.data.token
+            }
+          });
+          break;
+      }
+      res.status(200).send('success');
     }
-    res.status(200).send('success');
   } catch (e) {
     console.log(e)
     body = getBodySignIn(url, req.body.events[0].source.userId, replyToken);
@@ -170,6 +173,8 @@ const account = async (req, res) => {
     res.status(200).send('success');
   }
 };
+
+
 
 function getBodyDailyHealthReport(url, token, replyToken) {
   body = {
