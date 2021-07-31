@@ -155,7 +155,8 @@ const account = async (req, res) => {
         default:
           let data = {
             message: value,
-            senderId: replyToken
+            senderId: userId,
+            replyToken
           }
           await axios.post(url + '/question', data, {
             headers: {
